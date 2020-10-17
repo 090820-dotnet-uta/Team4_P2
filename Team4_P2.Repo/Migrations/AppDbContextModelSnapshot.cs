@@ -67,7 +67,7 @@ namespace Team4_P2.Repo.Migrations
 
             modelBuilder.Entity("Team4_P2.Models.Course", b =>
                 {
-                    b.Property<int>("CourseID")
+                    b.Property<int>("CourseId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -75,7 +75,7 @@ namespace Team4_P2.Repo.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CourseID");
+                    b.HasKey("CourseId");
 
                     b.ToTable("Courses");
                 });
@@ -87,10 +87,10 @@ namespace Team4_P2.Repo.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ClassID")
+                    b.Property<int>("ClassID")
                         .HasColumnType("int");
 
-                    b.Property<int>("CourseID")
+                    b.Property<int?>("CourseId")
                         .HasColumnType("int");
 
                     b.Property<int>("StudentID")
@@ -100,7 +100,7 @@ namespace Team4_P2.Repo.Migrations
 
                     b.HasIndex("ClassID");
 
-                    b.HasIndex("CourseID");
+                    b.HasIndex("CourseId");
 
                     b.HasIndex("StudentID");
 
@@ -178,13 +178,13 @@ namespace Team4_P2.Repo.Migrations
                 {
                     b.HasOne("Team4_P2.Models.Class", null)
                         .WithMany("Enrollments")
-                        .HasForeignKey("ClassID");
+                        .HasForeignKey("ClassID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Team4_P2.Models.Course", "Course")
                         .WithMany()
-                        .HasForeignKey("CourseID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CourseId");
 
                     b.HasOne("Team4_P2.Models.Student", "Student")
                         .WithMany("Enrollments")

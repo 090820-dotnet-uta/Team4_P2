@@ -9,8 +9,8 @@ namespace Team4_P2.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int EnrollmentID { get; set; }
-        [ForeignKey("CourseID")]
-        public int CourseID { get; set; }
+        [ForeignKey("ClassID")]
+        public int ClassID { get; set; }
         [ForeignKey("StudentID")]
         public int StudentID { get; set; }
         public virtual Course Course { get; set; }
