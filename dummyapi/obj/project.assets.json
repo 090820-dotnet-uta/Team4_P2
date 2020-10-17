@@ -1495,6 +1495,29 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "Team4_P2.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Team4_P2.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Team4_P2.Models.dll": {}
+        }
+      },
+      "Team4_P2.Repo/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Team4_P2.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Team4_P2.Repo.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Team4_P2.Repo.dll": {}
+        }
       }
     }
   },
@@ -5666,13 +5689,25 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "Team4_P2.Models/1.0.0": {
+      "type": "project",
+      "path": "../Team4_P2.Models/Team4_P2.Models.csproj",
+      "msbuildProject": "../Team4_P2.Models/Team4_P2.Models.csproj"
+    },
+    "Team4_P2.Repo/1.0.0": {
+      "type": "project",
+      "path": "../Team4_P2.Repo/Team4_P2.Repo.csproj",
+      "msbuildProject": "../Team4_P2.Repo/Team4_P2.Repo.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Microsoft.EntityFrameworkCore.Design >= 3.1.9",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.9",
-      "Microsoft.EntityFrameworkCore.Tools >= 3.1.9"
+      "Microsoft.EntityFrameworkCore.Tools >= 3.1.9",
+      "Team4_P2.Models >= 1.0.0",
+      "Team4_P2.Repo >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5700,7 +5735,14 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Earl\\Desktop\\RevatureV2\\Team4_P2\\Team4_P2.Models\\Team4_P2.Models.csproj": {
+              "projectPath": "C:\\Users\\Earl\\Desktop\\RevatureV2\\Team4_P2\\Team4_P2.Models\\Team4_P2.Models.csproj"
+            },
+            "C:\\Users\\Earl\\Desktop\\RevatureV2\\Team4_P2\\Team4_P2.Repo\\Team4_P2.Repo.csproj": {
+              "projectPath": "C:\\Users\\Earl\\Desktop\\RevatureV2\\Team4_P2\\Team4_P2.Repo\\Team4_P2.Repo.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
