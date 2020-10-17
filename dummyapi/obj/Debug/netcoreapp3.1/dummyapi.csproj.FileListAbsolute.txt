@@ -49,3 +49,17 @@ C:\Users\Earl\Desktop\RevatureV2\Team4_P2\dummyapi\bin\Debug\netcoreapp3.1\runti
 C:\Users\Earl\Desktop\RevatureV2\Team4_P2\dummyapi\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Earl\Desktop\RevatureV2\Team4_P2\dummyapi\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Earl\Desktop\RevatureV2\Team4_P2\dummyapi\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Earl\Desktop\RevatureV2\Team4_P2\dummyapi\obj\Debug\netcoreapp3.1\dummyapi.csproj.CoreCompileInputs.cache
+C:\Users\Earl\Desktop\RevatureV2\Team4_P2\dummyapi\obj\Debug\netcoreapp3.1\dummyapi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Earl\Desktop\RevatureV2\Team4_P2\dummyapi\bin\Debug\netcoreapp3.1\dummyapi.deps.json
+C:\Users\Earl\Desktop\RevatureV2\Team4_P2\dummyapi\bin\Debug\netcoreapp3.1\dummyapi.runtimeconfig.json
+C:\Users\Earl\Desktop\RevatureV2\Team4_P2\dummyapi\bin\Debug\netcoreapp3.1\dummyapi.runtimeconfig.dev.json
+C:\Users\Earl\Desktop\RevatureV2\Team4_P2\dummyapi\bin\Debug\netcoreapp3.1\dummyapi.dll
+C:\Users\Earl\Desktop\RevatureV2\Team4_P2\dummyapi\bin\Debug\netcoreapp3.1\dummyapi.pdb
+C:\Users\Earl\Desktop\RevatureV2\Team4_P2\dummyapi\bin\Debug\netcoreapp3.1\Team4_P2.Models.dll
+C:\Users\Earl\Desktop\RevatureV2\Team4_P2\dummyapi\bin\Debug\netcoreapp3.1\Team4_P2.Repo.dll
+C:\Users\Earl\Desktop\RevatureV2\Team4_P2\dummyapi\bin\Debug\netcoreapp3.1\Team4_P2.Models.pdb
+C:\Users\Earl\Desktop\RevatureV2\Team4_P2\dummyapi\bin\Debug\netcoreapp3.1\Team4_P2.Repo.pdb
+C:\Users\Earl\Desktop\RevatureV2\Team4_P2\dummyapi\obj\Debug\netcoreapp3.1\dummyapi.dll
+C:\Users\Earl\Desktop\RevatureV2\Team4_P2\dummyapi\obj\Debug\netcoreapp3.1\dummyapi.pdb
+C:\Users\Earl\Desktop\RevatureV2\Team4_P2\dummyapi\obj\Debug\netcoreapp3.1\dummyapi.genruntimeconfig.cache

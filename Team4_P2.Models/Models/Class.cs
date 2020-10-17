@@ -7,6 +7,8 @@ namespace Team4_P2.Models
     public class Class
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+
         public int ClassID { get; set; }
         [ForeignKey("CourseID")]
         public int CourseID { get; set; }

@@ -6,6 +6,10 @@ namespace Team4_P2.Models
 {
     public class Assignment
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+
+        public int AssignmentId { get; set; }
         [ForeignKey("Enrollment")]
         public int EnrollmentID { get; set; }
         public int? Grade { get; set; }
