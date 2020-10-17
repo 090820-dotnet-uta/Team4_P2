@@ -25,13 +25,17 @@ namespace Team4_P2.Repo.Repository
         {
             return await _context.Assignments.FirstOrDefaultAsync(assignment => assignment.AssignmentID == assignmentId);
         }
-        public async Task<Assignment> EditAssignmentScoreAsync(int assignmentId, int enrollmentId, int grade, string title)
+        public async Task<Assignment> AddAssignment(Assignment assignment)
         {
-            var assignment = await _context.Assignments.FirstOrDefaultAsync(x => x.AssignmentID == assignmentId);
-            assignment.EnrollmentID = enrollmentId;
-            assignment.Grade = grade;
-            assignment.Title = title;
-            _context.Update(assignment);
+            _context.Add(assignment);
+            _context.SaveChanges();
+            return await _context.Assignments.FirstOrDefaultAsync(tempAssignment => tempAssignment.Equals(assignment));
+        }
+        public async Task<Assignment> EditAssignmentScoreAsync(int assignmentId, Assignment assignment)
+        {
+            var Assignment = await _context.Assignments.FirstOrDefaultAsync(x => x.AssignmentID == assignmentId);
+            Assignment = assignment;
+            _context.Update(Assignment);
             _context.SaveChanges();
             return await _context.Assignments.FirstOrDefaultAsync(x => x == assignment);
         }
@@ -59,10 +63,16 @@ namespace Team4_P2.Repo.Repository
         {
             return await _context.Courses.FirstOrDefaultAsync(course => course.CourseID == courseId);
         }
-        public async Task<Course> EditCourseScoreAsync(int CourseId, string title)
+        public async Task<Course> AddCourse(Course course)
+        {
+            _context.Add(course);
+            _context.SaveChanges();
+            return await _context.Courses.FirstOrDefaultAsync(tempCourse => tempCourse.Equals(course));
+        }
+        public async Task<Course> EditCourseScoreAsync(int CourseId, Course course)
         {
             var Course = await _context.Courses.FirstOrDefaultAsync(x => x.CourseID == CourseId);
-            Course.Title = title;
+            Course = course;
             _context.Update(Course);
             _context.SaveChanges();
             return await _context.Courses.FirstOrDefaultAsync(x => x == Course);

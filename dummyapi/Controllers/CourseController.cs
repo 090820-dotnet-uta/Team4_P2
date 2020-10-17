@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Team4_P2.Models;
 using Team4_P2.Repo.Repository;
 
@@ -29,7 +31,7 @@ namespace dummyapi
             return await _repository.GetCoursesAsync();
         }
         [HttpGet("Get/{id}")]
-        public async Task<ActionResult<Course>> Get(int id)
+        public async Task<ActionResult<Course>> GetCourse(int id)
         {
             return await _repository.GetCourseAsync(id);
         }
@@ -43,15 +45,38 @@ namespace dummyapi
 
         // POST api/<CourseController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void CreateCourse(Course course)
         {
+            Course newCourse = new Course
         }
 
         // PUT api/<CourseController>/5
         [HttpPut("{id}")]//update
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> PutCourse(int id, Course course)
         {
+            if (id != course.CourseID)
+            {
+                return BadRequest();
+            }
+            _repository.entry
+            try
+            {
+                await _repository.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!SkillExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return NoContent();
         }
+    }
 
         // DELETE api/<CourseController>/5
         [HttpDelete("{id}")]
