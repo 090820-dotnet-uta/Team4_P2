@@ -69,19 +69,19 @@ namespace Team4_P2.Repo.Repository
             _context.SaveChanges();
             return await _context.Courses.FirstOrDefaultAsync(tempCourse => tempCourse.Equals(course));
         }
-        public async Task<Course> EditCourseScoreAsync(int CourseId, Course course)
+        public async Task<Course> EditCourseScoreAsync(Course course)
         {
-            var Course = await _context.Courses.FirstOrDefaultAsync(x => x.CourseID == CourseId);
-            Course = course;
-            _context.Update(Course);
+            var target = await _context.Courses.FindAsync(course.CourseID);
+            target = course;
+            _context.Update(target);
             _context.SaveChanges();
-            return await _context.Courses.FirstOrDefaultAsync(x => x == Course);
+            return await _context.Courses.FirstOrDefaultAsync(tempCourse => tempCourse.Equals(course));
         }
-        public Boolean DeleteCourse(int CourseId)
+        public async Task<Boolean> DeleteCourse(int CourseId)
         {
             try
             {
-                var Course = _context.Courses.FirstOrDefaultAsync(Course => Course.CourseID == CourseId);
+                var Course = await _context.Courses.FirstOrDefaultAsync(Course => Course.CourseID == CourseId);
                 _context.Remove(Course);
                 _context.SaveChanges();
                 return true;
@@ -90,7 +90,6 @@ namespace Team4_P2.Repo.Repository
             {
                 return false;
             }
-
         }
     }
 }

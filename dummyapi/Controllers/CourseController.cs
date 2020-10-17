@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Team4_P2.Models;
 using Team4_P2.Repo.Repository;
@@ -45,43 +46,48 @@ namespace dummyapi
 
         // POST api/<CourseController>
         [HttpPost]
-        public void CreateCourse(Course course)
+        public async Task<ActionResult<Course>> CreateCourseAsync(string title)
         {
-            Course newCourse = new Course
+            Course course = new Course();
+            course.Title = title;
+            try
+            {
+                var returnCourse = await _repository.AddCourse(course);
+                return returnCourse;
+            }
+            catch(SqlException e)
+            {
+                return NoContent();
+            }
         }
 
         // PUT api/<CourseController>/5
         [HttpPut("{id}")]//update
-        public async Task<IActionResult> PutCourse(int id, Course course)
+        public async Task<ActionResult<Course>> PutCourse(Course course)
         {
-            if (id != course.CourseID)
-            {
-                return BadRequest();
-            }
-            _repository.entry
             try
             {
-                await _repository.SaveChangesAsync();
+                return await _repository.EditCourseScoreAsync(course);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!SkillExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return NoContent();
             }
-            return NoContent();
         }
-    }
-
         // DELETE api/<CourseController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<bool> DeleteCourse(int id)
         {
+            Boolean result;
+            try
+            {
+                result = await _repository.DeleteCourse(id);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                result = false;
+            }
+            return result;
         }
     }
 }
