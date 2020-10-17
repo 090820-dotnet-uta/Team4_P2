@@ -36,7 +36,6 @@ namespace dummyapi
         {
             return await _repository.GetCourseAsync(id);
         }
-
         // GET api/<CourseController>/5
         //[HttpGet("{id}")]
         //public string Get(int id)
@@ -45,7 +44,7 @@ namespace dummyapi
         //}
 
         // POST api/<CourseController>
-        [HttpPost]
+        [HttpPost]//Add
         public async Task<ActionResult<Course>> CreateCourseAsync(string title)
         {
             Course course = new Course();
@@ -55,7 +54,7 @@ namespace dummyapi
                 var returnCourse = await _repository.AddCourse(course);
                 return returnCourse;
             }
-            catch(SqlException e)
+            catch
             {
                 return NoContent();
             }
