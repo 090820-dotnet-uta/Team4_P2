@@ -10,13 +10,13 @@ namespace Team4_P2.Repo.Migrations
                 name: "Courses",
                 columns: table => new
                 {
-                    CourseId = table.Column<int>(nullable: false)
+                    CourseID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Courses", x => x.CourseId);
+                    table.PrimaryKey("PK_Courses", x => x.CourseID);
                 });
 
             migrationBuilder.CreateTable(
@@ -79,7 +79,7 @@ namespace Team4_P2.Repo.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ClassID = table.Column<int>(nullable: false),
                     StudentID = table.Column<int>(nullable: false),
-                    CourseId = table.Column<int>(nullable: true)
+                    CourseID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -91,10 +91,10 @@ namespace Team4_P2.Repo.Migrations
                         principalColumn: "ClassID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Enrollments_Courses_CourseId",
-                        column: x => x.CourseId,
+                        name: "FK_Enrollments_Courses_CourseID",
+                        column: x => x.CourseID,
                         principalTable: "Courses",
-                        principalColumn: "CourseId",
+                        principalColumn: "CourseID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Enrollments_Students_StudentID",
@@ -108,7 +108,7 @@ namespace Team4_P2.Repo.Migrations
                 name: "Assignments",
                 columns: table => new
                 {
-                    AssignmentId = table.Column<int>(nullable: false)
+                    AssignmentID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     EnrollmentID = table.Column<int>(nullable: false),
                     Grade = table.Column<int>(nullable: true),
@@ -116,7 +116,7 @@ namespace Team4_P2.Repo.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Assignments", x => x.AssignmentId);
+                    table.PrimaryKey("PK_Assignments", x => x.AssignmentID);
                     table.ForeignKey(
                         name: "FK_Assignments_Enrollments_EnrollmentID",
                         column: x => x.EnrollmentID,
@@ -141,9 +141,9 @@ namespace Team4_P2.Repo.Migrations
                 column: "ClassID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Enrollments_CourseId",
+                name: "IX_Enrollments_CourseID",
                 table: "Enrollments",
-                column: "CourseId");
+                column: "CourseID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Enrollments_StudentID",

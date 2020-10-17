@@ -21,7 +21,7 @@ namespace Team4_P2.Repo.Migrations
 
             modelBuilder.Entity("Team4_P2.Models.Assignment", b =>
                 {
-                    b.Property<int>("AssignmentId")
+                    b.Property<int>("AssignmentID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -35,7 +35,7 @@ namespace Team4_P2.Repo.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("AssignmentId");
+                    b.HasKey("AssignmentID");
 
                     b.HasIndex("EnrollmentID");
 
@@ -67,7 +67,7 @@ namespace Team4_P2.Repo.Migrations
 
             modelBuilder.Entity("Team4_P2.Models.Course", b =>
                 {
-                    b.Property<int>("CourseId")
+                    b.Property<int>("CourseID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -75,7 +75,7 @@ namespace Team4_P2.Repo.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CourseId");
+                    b.HasKey("CourseID");
 
                     b.ToTable("Courses");
                 });
@@ -90,7 +90,7 @@ namespace Team4_P2.Repo.Migrations
                     b.Property<int>("ClassID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CourseId")
+                    b.Property<int?>("CourseID")
                         .HasColumnType("int");
 
                     b.Property<int>("StudentID")
@@ -100,7 +100,7 @@ namespace Team4_P2.Repo.Migrations
 
                     b.HasIndex("ClassID");
 
-                    b.HasIndex("CourseId");
+                    b.HasIndex("CourseID");
 
                     b.HasIndex("StudentID");
 
@@ -184,7 +184,7 @@ namespace Team4_P2.Repo.Migrations
 
                     b.HasOne("Team4_P2.Models.Course", "Course")
                         .WithMany()
-                        .HasForeignKey("CourseId");
+                        .HasForeignKey("CourseID");
 
                     b.HasOne("Team4_P2.Models.Student", "Student")
                         .WithMany("Enrollments")
