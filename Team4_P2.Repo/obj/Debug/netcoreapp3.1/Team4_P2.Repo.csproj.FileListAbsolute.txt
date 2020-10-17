@@ -1,0 +1,4 @@
+C:\Users\Earl\Desktop\RevatureV2\Team4_P2\Team4_P2.Repo\bin\Debug\netcoreapp3.1\Team4_P2.Models.dll
+C:\Users\Earl\Desktop\RevatureV2\Team4_P2\Team4_P2.Repo\obj\Debug\netcoreapp3.1\Team4_P2.Repo.csprojAssemblyReference.cache
+C:\Users\Earl\Desktop\RevatureV2\Team4_P2\Team4_P2.Repo\obj\Debug\netcoreapp3.1\Team4_P2.Repo.AssemblyInfoInputs.cache
+C:\Users\Earl\Desktop\RevatureV2\Team4_P2\Team4_P2.Repo\obj\Debug\netcoreapp3.1\Team4_P2.Repo.AssemblyInfo.cs
