@@ -13,7 +13,7 @@ namespace Team4_P2.Models
         public string LastName { get; set; }
         [Required]
         public string FirstName { get; set; }
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         public char Gender { get; set; }
         public virtual ICollection<Enrollment> Enrollments { get; set; }
     }
