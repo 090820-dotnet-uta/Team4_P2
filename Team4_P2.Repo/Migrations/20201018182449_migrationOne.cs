@@ -27,7 +27,7 @@ namespace Team4_P2.Repo.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     LastName = table.Column<string>(nullable: false),
                     FirstName = table.Column<string>(nullable: false),
-                    PhoneNumber = table.Column<int>(nullable: false),
+                    PhoneNumber = table.Column<string>(nullable: true),
                     Gender = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
@@ -78,8 +78,7 @@ namespace Team4_P2.Repo.Migrations
                     EnrollmentID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ClassID = table.Column<int>(nullable: false),
-                    StudentID = table.Column<int>(nullable: false),
-                    CourseID = table.Column<int>(nullable: true)
+                    StudentID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -90,12 +89,6 @@ namespace Team4_P2.Repo.Migrations
                         principalTable: "Classes",
                         principalColumn: "ClassID",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Enrollments_Courses_CourseID",
-                        column: x => x.CourseID,
-                        principalTable: "Courses",
-                        principalColumn: "CourseID",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Enrollments_Students_StudentID",
                         column: x => x.StudentID,
@@ -141,11 +134,6 @@ namespace Team4_P2.Repo.Migrations
                 column: "ClassID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Enrollments_CourseID",
-                table: "Enrollments",
-                column: "CourseID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Enrollments_StudentID",
                 table: "Enrollments",
                 column: "StudentID");
@@ -157,13 +145,13 @@ namespace Team4_P2.Repo.Migrations
                 name: "Assignments");
 
             migrationBuilder.DropTable(
+                name: "Courses");
+
+            migrationBuilder.DropTable(
                 name: "Enrollments");
 
             migrationBuilder.DropTable(
                 name: "Classes");
-
-            migrationBuilder.DropTable(
-                name: "Courses");
 
             migrationBuilder.DropTable(
                 name: "Students");

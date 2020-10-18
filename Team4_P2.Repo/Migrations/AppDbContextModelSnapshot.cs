@@ -90,17 +90,12 @@ namespace Team4_P2.Repo.Migrations
                     b.Property<int>("ClassID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CourseID")
-                        .HasColumnType("int");
-
                     b.Property<int>("StudentID")
                         .HasColumnType("int");
 
                     b.HasKey("EnrollmentID");
 
                     b.HasIndex("ClassID");
-
-                    b.HasIndex("CourseID");
 
                     b.HasIndex("StudentID");
 
@@ -126,8 +121,8 @@ namespace Team4_P2.Repo.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PhoneNumber")
-                        .HasColumnType("int");
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
@@ -181,10 +176,6 @@ namespace Team4_P2.Repo.Migrations
                         .HasForeignKey("ClassID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("Team4_P2.Models.Course", "Course")
-                        .WithMany()
-                        .HasForeignKey("CourseID");
 
                     b.HasOne("Team4_P2.Models.Student", "Student")
                         .WithMany("Enrollments")
