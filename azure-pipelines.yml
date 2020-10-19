@@ -34,4 +34,9 @@ steps:
     deployToSlotOrASE: true
     ResourceGroupName: 'P2'
     SlotName: 'production'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+# - task: InvokeRESTAPI@1
+#   inputs:
+#     connectionType: 'connectedServiceNameARM'
+#     azureServiceConnection: 'Azure subscription 1(6fc81904-8f97-4b6e-917d-519941174623)'
+#     method: 'POST'
+#     waitForCompletion: 'false'
