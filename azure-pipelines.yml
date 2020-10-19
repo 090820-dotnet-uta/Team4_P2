@@ -7,7 +7,12 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
 
 container: mcr.microsoft.com/dotnet/core/sdk:3.1
 steps:
@@ -17,6 +22,21 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: '**/*api*.csproj'
+    projects: '**/*.csproj'
     publishTestResults: false
     
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(6fc81904-8f97-4b6e-917d-519941174623)'
+    appType: 'webApp'
+    WebAppName: 'P2SchoolApi'
+    deployToSlotOrASE: true
+    ResourceGroupName: 'P2'
+    SlotName: 'production'
+# - task: InvokeRESTAPI@1
+#   inputs:
+#     connectionType: 'connectedServiceNameARM'
+#     azureServiceConnection: 'Azure subscription 1(6fc81904-8f97-4b6e-917d-519941174623)'
+#     method: 'POST'
+#     waitForCompletion: 'false'
