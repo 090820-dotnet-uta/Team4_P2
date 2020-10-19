@@ -25,3 +25,13 @@ steps:
     projects: '**/*umm*.csproj'
     publishTestResults: false
     
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(6fc81904-8f97-4b6e-917d-519941174623)'
+    appType: 'webApp'
+    WebAppName: 'P2SchoolApi'
+    deployToSlotOrASE: true
+    ResourceGroupName: 'P2'
+    SlotName: 'production'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
