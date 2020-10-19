@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Team4_P2.Models;
 using Team4_P2.Repo.Repository;
 
@@ -31,27 +32,59 @@ namespace dummyapi
 
         // GET api/<AssignmentController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<Assignment>> Get(int id)
         {
-            return "value";
+            return await _repository.GetAssignmentAsync(id);
         }
 
         // POST api/<AssignmentController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost]//Add
+        public async Task<ActionResult<Assignment>> CreateAssignmentAsync(int enrollmentId, int? grade, string title)
         {
+            Assignment assignment = new Assignment();
+            assignment.EnrollmentID = enrollmentId;
+            if(grade.HasValue)
+            {
+                assignment.Grade = grade;
+            }
+            assignment.Title = title;
+            try
+            {
+                var returnassignment = await _repository.AddAssignment(assignment);
+                return returnassignment;
+            }
+            catch
+            {
+                return NoContent();
+            }
         }
 
         // PUT api/<AssignmentController>/5
-        [HttpPut("{id}")]//update
-        public void Put(int id, [FromBody] string value)
+        public async Task<ActionResult<Assignment>> PutAssignment(Assignment Assignment)
         {
+            try
+            {
+                return await _repository.EditAssignmentScoreAsync(Assignment);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                return NoContent();
+            }
         }
-
         // DELETE api/<AssignmentController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<bool> DeleteAssignment(int id)
         {
+            Boolean result;
+            try
+            {
+                result = await _repository.DeleteAssignment(id);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                result = false;
+            }
+            return result;
         }
     }
 }

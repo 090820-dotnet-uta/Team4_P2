@@ -32,7 +32,7 @@ namespace Team4_P2.Repo.Repository
             _context.SaveChanges();
             return await _context.Assignments.FirstOrDefaultAsync(tempAssignment => tempAssignment.Equals(assignment));
         }
-        public async Task<Assignment> EditAssignmentScoreAsync(int assignmentId, Assignment assignment)
+        public async Task<Assignment> EditAssignmentScoreAsync(Assignment assignment)
         {
             var Assignment = await _context.Assignments.FirstOrDefaultAsync(x => x.AssignmentID == assignmentId);
             Assignment = assignment;
