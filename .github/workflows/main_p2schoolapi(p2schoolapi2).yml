@@ -10,11 +10,15 @@ on:
 
 jobs:
   build-and-deploy:
+    
     runs-on: windows-latest
-
+    variables:
+      solution: '**/*.sln'
+      buildPlatform: 'Any CPU'
+      buildConfiguration: 'Release'
     steps:
     - uses: actions/checkout@master
-
+    
     - name: Set up .NET Core
       uses: actions/setup-dotnet@v1
       with:
@@ -33,3 +37,4 @@ jobs:
         slot-name: 'p2schoolapi2'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_d03aa1b9ecf34ac183d79e00b2b7309f }}
         package: ${{env.DOTNET_ROOT}}/myapp 
+    
