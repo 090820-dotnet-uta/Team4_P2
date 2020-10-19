@@ -22,7 +22,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: '**/*umm*.csproj'
+    projects: '**/*.csproj'
     publishTestResults: false
     
 - task: AzureRmWebAppDeployment@4
