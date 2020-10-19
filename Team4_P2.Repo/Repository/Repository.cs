@@ -34,7 +34,7 @@ namespace Team4_P2.Repo.Repository
         }
         public async Task<Assignment> EditAssignmentScoreAsync(Assignment assignment)
         {
-            var Assignment = await _context.Assignments.FirstOrDefaultAsync(x => x.AssignmentID == assignmentId);
+            var Assignment = await _context.Assignments.FirstOrDefaultAsync(x => x.AssignmentID == assignment.AssignmentID);
             Assignment = assignment;
             _context.Update(Assignment);
             _context.SaveChanges();
