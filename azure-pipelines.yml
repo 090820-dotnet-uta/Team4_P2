@@ -14,7 +14,7 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
-container: mcr.microsoft.com/dotnet/core/sdk:3.1
+#container: mcr.microsoft.com/dotnet/core/sdk:3.1
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
