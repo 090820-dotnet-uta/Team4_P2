@@ -9,6 +9,11 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+variables:
+  solution: '**/*mmy*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
 container: mcr.microsoft.com/dotnet/core/sdk:3.1
 steps:
 - script: echo Hello, world!
@@ -17,6 +22,6 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: '**/*api*.csproj'
+    projects: '**/*umm*.csproj'
     publishTestResults: false
     
