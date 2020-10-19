@@ -15,37 +15,39 @@ namespace dummyapi
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CourseController : ControllerBase
+    public class TeacherController : ControllerBase
     {
-        // GET: api/<CourseController>
+        // GET: api/<TeacherController>
 
         private readonly Repository _repository;
 
-        public CourseController(Repository repository)
+        public TeacherController(Repository repository)
         {
             _repository = repository;
         }
 
         [HttpGet("GetAll")]
-        public async Task<ActionResult<List<Course>>> GetAll()
+        public async Task<ActionResult<List<Teacher>>> GetAll()
         {
-            return await _repository.GetCoursesAsync();
+            return await _repository.GetTeachersAsync();
         }
         [HttpGet("Get/{id}")]
-        public async Task<ActionResult<Course>> GetCourse(int id)
+        public async Task<ActionResult<Teacher>> GetTeacher(int id)
         {
-            return await _repository.GetCourseAsync(id);
+            return await _repository.GetTeacherAsync(id);
         }
         
         [HttpPost]//Add
-        public async Task<ActionResult<Course>> CreateCourseAsync(string title)
+        public async Task<ActionResult<Teacher>> CreateTeacherAsync(string firstName,string lastName,char gender)
         {
-            Course Course = new Course();
-            Course.Title = title;
+            Teacher Teacher = new Teacher();
+            Teacher.FirstName = firstName;
+            Teacher.LastName = lastName;
+            Teacher.Gender = gender;
             try
             {
-                var returnCourse = await _repository.AddCourse(Course);
-                return returnCourse;
+                var returnTeacher = await _repository.AddTeacher(Teacher);
+                return returnTeacher;
             }
             catch
             {
@@ -53,27 +55,27 @@ namespace dummyapi
             }
         }
 
-        // PUT api/<CourseController>/5
+        // PUT api/<TeacherController>/5
         [HttpPut("{id}")]//update
-        public async Task<ActionResult<Course>> PutCourse(Course Course)
+        public async Task<ActionResult<Teacher>> PutTeacher(Teacher Teacher)
         {
             try
             {
-                return await _repository.EditCourseScoreAsync(Course);
+                return await _repository.EditTeacherScoreAsync(Teacher);
             }
             catch (DbUpdateConcurrencyException)
             {
                 return NoContent();
             }
         }
-        // DELETE api/<CourseController>/5
+        // DELETE api/<TeacherController>/5
         [HttpDelete("{id}")]
-        public async Task<bool> DeleteCourse(int id)
+        public async Task<bool> DeleteTeacher(int id)
         {
             Boolean result;
             try
             {
-                result = await _repository.DeleteCourse(id);
+                result = await _repository.DeleteTeacher(id);
             }
             catch (DbUpdateConcurrencyException)
             {
