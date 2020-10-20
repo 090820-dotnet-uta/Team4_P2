@@ -26,7 +26,7 @@ steps:
     SonarCloud: 'dummyapi'
     organization: 'acearl57'
     scannerMode: 'MSBuild'
-    projectKey: 'acearl57'
+    projectKey: 'acearl57_Team4_P2'
     projectName: 'Team4_P2'
     extraProperties: 'sonar.cs.opencover.reportsPaths="$(Agent.TempDirectory)/**/coverage.opencover.xml"'
 
