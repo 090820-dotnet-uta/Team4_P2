@@ -35,12 +35,12 @@ steps:
   inputs:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)
+    configuration: '$(buildConfiguration)'
 
 - task: AzureRmWebAppDeployment@4
-    inputs:
-      ConnectionType: "AzureRM"
-      azureSubscription: "Azure subscription 1(4cbda2dd-620b-4a77-8bbe-1a865b43c21b)"
-      appType: "webApp"
-      WebAppName: "Team4_P2"
-      packageForLinux: "$(Build.ArtifactStagingDirectory)"
+  inputs:
+    ConnectionType: "AzureRM"
+    azureSubscription: "Azure subscription 1(4cbda2dd-620b-4a77-8bbe-1a865b43c21b)"
+    appType: "webApp"
+    WebAppName: "Team4_P2"
+    packageForLinux: "$(Build.ArtifactStagingDirectory)"
