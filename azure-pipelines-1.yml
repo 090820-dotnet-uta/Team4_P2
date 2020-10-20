@@ -41,5 +41,5 @@ steps:
     ConnectionType: "AzureRM"
     azureSubscription: "Azure subscription 1(6fc81904-8f97-4b6e-917d-519941174623)"
     appType: "webApp"
-    WebAppName: "Team4_P2"
+    WebAppName: "P2SchoolApi"
     packageForLinux: "$(Build.ArtifactStagingDirectory)"
