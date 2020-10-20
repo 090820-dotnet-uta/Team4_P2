@@ -1,7 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Team4_P2.Models;
 namespace Team4_P2.Repo.Data
 {

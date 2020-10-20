@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using Team4_P2.Repo.Data;
-using System.Linq;
 using System.Threading.Tasks;
 using Team4_P2.Models;
 using Microsoft.EntityFrameworkCore;
