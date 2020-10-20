@@ -1,0 +1,45 @@
+# ASP.NET Core (.NET Framework)
+# Build and test ASP.NET Core projects targeting the full .NET Framework.
+# Add steps that publish symbols, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+trigger:
+- main
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+steps:
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution)'
+
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'Team4_P2'
+    organization: 'acearl57'
+    scannerMode: 'MSBuild'
+    projectKey: 'acearl57_Team4_P2'
+    projectName: 'Team4_P2'
+    extraProperties: 'sonar.cs.opencover.reportsPaths="$(Agent.TempDirectory)/**/coverage.opencover.xml"'
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+- task: SonarCloudAnalyze@1
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: "AzureRM"
+    azureSubscription: "Azure subscription 1(6fc81904-8f97-4b6e-917d-519941174623)"
+    appType: "webApp"
+    WebAppName: "P2SchoolApi"
+    packageForLinux: "$(Build.ArtifactStagingDirectory)"
