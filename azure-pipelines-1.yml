@@ -23,7 +23,7 @@ steps:
 
 - task: SonarCloudPrepare@1
   inputs:
-    SonarCloud: 'P2SchoolApi'
+    SonarCloud: 'Team4_P2'
     organization: 'acearl57'
     scannerMode: 'MSBuild'
     projectKey: 'acearl57_Team4_P2'
