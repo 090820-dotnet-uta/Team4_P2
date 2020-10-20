@@ -18,13 +18,8 @@ steps:
 - task: NuGetToolInstaller@1
 
 - script: |
-    mkdir $(Build.SourcesDirectory)\results
-    dotnet test --logger trx /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura  StrikesLibrary.Test
-    dotnet test --logger trx /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:MergeWtih=$(Build.SourcesDirectory)\StrikesLibrary.Test\coverage.cobertura.xml StrikesRepository.Test
-    copy $(Build.SourcesDirectory)\StrikesLibrary.Test\coverage.cobertura.xml $(Build.SourcesDirectory)\results
-    dotnet tool install dotnet-reportgenerator-globaltool --tool-path . --version 4.0.0-rc4
-    .\reportgenerator "-reports:$(Build.SourcesDirectory)\StrikesRepository.Test\coverage.cobertura.xml" "-targetdir:results" "-reporttypes:HTMLInline;HTMLChart"
-  displayName: 'Unit testing'
+    dotnet test 
+
   
 - task: NuGetCommand@2
   inputs:
