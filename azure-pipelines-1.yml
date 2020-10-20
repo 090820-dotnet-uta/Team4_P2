@@ -16,10 +16,6 @@ variables:
 
 steps:
 - task: NuGetToolInstaller@1
-
-- script: |
-    dotnet test 
-
   
 - task: NuGetCommand@2
   inputs:
@@ -39,12 +35,6 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
     
-- task: PublishCodeCoverageResults@1
-  inputs:
-    summaryFileLocation: $(Build.SourcesDirectory)\results\coverage.cobertura.xml
-    reportDirectory: $(Build.SourcesDirectory)\results
-    codecoverageTool: cobertura
-
 - task: SonarCloudAnalyze@1
 
 - task: AzureRmWebAppDeployment@4
