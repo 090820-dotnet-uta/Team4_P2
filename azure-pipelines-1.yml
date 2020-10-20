@@ -29,13 +29,12 @@ steps:
     projectKey: 'acearl57_Team4_P2'
     projectName: 'Team4_P2'
     extraProperties: 'sonar.cs.opencover.reportsPaths="$(Agent.TempDirectory)/**/coverage.opencover.xml"'
-
-- task: SonarCloudAnalyze@1
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+- task: SonarCloudAnalyze@1
 
 - task: AzureRmWebAppDeployment@4
   inputs:
