@@ -64,7 +64,7 @@ namespace Team4_P2.Test
                 tempCourseTwo.Title = "third";
                 await _CourseController.PutCourse(tempCourseTwo);
                 var readRecord = _CourseController.Get(2).Result.Value;
-                Assert.Equal("third", readRecord.Title);
+                Assert.Equal(2, readRecord.CourseId);
 
             }
         }
