@@ -10,6 +10,7 @@ namespace Team4_P2.Test
 {
     public class AllTests
     {
+
         [Fact]
         public async void AddAssignmentToDb()
         {
@@ -25,6 +26,24 @@ namespace Team4_P2.Test
                 assignment = await repo.AddAssignment(assignment);
 
                 Assert.True(context.Assignments.Contains(assignment));
+            }
+        }
+        [Fact]
+        public async void DeleteAssignmentToDb()
+        {
+            var options = new DbContextOptionsBuilder<AppDbContext>()
+                .UseInMemoryDatabase(databaseName: "yeet").Options;
+            using (var context = new AppDbContext(options))
+            {
+                Repository repo = new Repository(context);
+                Assignment Assignment = new Assignment();
+                Assignment.Title = "Ok boomer";
+                Assignment.EnrollmentID = 1;
+
+                Assignment = await repo.AddAssignment(Assignment);
+
+                bool rip = await repo.DeleteAssignment(Assignment.AssignmentID);
+                Assert.False(context.Assignments.Contains(Assignment));
             }
         }
         [Fact]
