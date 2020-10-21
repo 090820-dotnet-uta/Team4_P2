@@ -45,7 +45,7 @@ namespace Team4_P2.Repo.Repository
             try
             {
                 var Admin = await _context.Assignments.FirstOrDefaultAsync(Admin => Admin.AssignmentId == admin.AdminId);
-                _context.Remove(Admin);
+                _context.Remove(admin);
                 _context.SaveChanges();
                 return true;
             }
@@ -302,12 +302,12 @@ namespace Team4_P2.Repo.Repository
             _context.SaveChanges();
             return await _context.Users.FirstOrDefaultAsync(x => x == user);
         }
-        public async Task<Boolean> DeleteUser(int assignmentId)
+        public async Task<Boolean> DeleteUser(int UserId)
         {
             try
             {
-                var User = await _context.Assignments.FirstOrDefaultAsync(User => User.AssignmentId == assignmentId);
-                _context.Remove(User);
+                var user = await _context.Users.FirstOrDefaultAsync(x => x.UserId == UserId);
+                _context.Remove(user);
                 _context.SaveChanges();
                 return true;
             }
