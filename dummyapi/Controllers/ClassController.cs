@@ -43,12 +43,8 @@ namespace dummyapi
 
         // POST api/<ClassController>
         [HttpPost]//Add
-        public async Task<ActionResult<Class>> CreateClassAsync(int courseId, int teacherId,string location)
+        public async Task<ActionResult<Class>> CreateClassAsync(Class Class)
         {
-            Class Class = new Class();
-            Class.CourseID = courseId;
-            Class.TeacherID = teacherId;
-            Class.Location = location;
             try
             {
                 var returnClass = await _repository.AddClass(Class);

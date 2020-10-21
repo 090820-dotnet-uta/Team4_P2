@@ -35,16 +35,12 @@ namespace dummyapi
         }
         
         [HttpPost]//Add
-        public async Task<ActionResult<Teacher>> CreateTeacherAsync(string firstName,string lastName,char gender)
+        public async Task<ActionResult<Teacher>> CreateTeacherAsync(Teacher teacher)
         {
-            Teacher Teacher = new Teacher();
-            Teacher.FirstName = firstName;
-            Teacher.LastName = lastName;
-            Teacher.Gender = gender;
             try
             {
-                var returnTeacher = await _repository.AddTeacher(Teacher);
-                return returnTeacher;
+                var returnUser = await _repository.AddTeacher(teacher);
+                return returnUser;
             }
             catch
             {

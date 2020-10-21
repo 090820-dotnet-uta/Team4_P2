@@ -18,7 +18,7 @@ namespace Team4_P2.Repo.Repository
         //Each object needs a GetAll, a get singular record, an add record, an edit record, and a delete record
 
         //Admin crud
-        public async Task<List<Admin>> GetAdminAsync()
+        public async Task<List<Admin>> GetAdminsAsync()
         {
             return await _context.Admins.ToListAsync();
         }
@@ -280,7 +280,7 @@ namespace Team4_P2.Repo.Repository
             }
         }
         //user crud
-        public async Task<List<User>> GetUserAsync()
+        public async Task<List<User>> GetUsersAsync()
         {
             return await _context.Users.ToListAsync();
         }

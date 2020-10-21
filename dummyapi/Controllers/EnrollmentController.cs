@@ -35,11 +35,8 @@ namespace dummyapi
         }
         
         [HttpPost]//Add
-        public async Task<ActionResult<Enrollment>> CreateEnrollmentAsync(int classId, int studentId)
+        public async Task<ActionResult<Enrollment>> CreateEnrollmentAsync(Enrollment Enrollment)
         {
-            Enrollment Enrollment = new Enrollment();
-            Enrollment.ClassID = classId;
-            Enrollment.StudentID = studentId;
             try
             {
                 var returnEnrollment = await _repository.AddEnrollment(Enrollment);

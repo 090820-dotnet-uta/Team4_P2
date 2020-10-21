@@ -38,19 +38,12 @@ namespace dummyapi
 
         // POST api/<AssignmentController>
         [HttpPost]//Add
-        public async Task<ActionResult<Assignment>> CreateAssignmentAsync(int enrollmentId, int? grade, string title)
+        public async Task<ActionResult<Assignment>> CreateAssignmentAsync(Assignment Assignment)
         {
-            Assignment assignment = new Assignment();
-            assignment.EnrollmentID = enrollmentId;
-            if(grade.HasValue)
-            {
-                assignment.Grade = grade;
-            }
-            assignment.Title = title;
             try
             {
-                var returnassignment = await _repository.AddAssignment(assignment);
-                return returnassignment;
+                var returnAssignment = await _repository.AddAssignment(Assignment);
+                return returnAssignment;
             }
             catch
             {
