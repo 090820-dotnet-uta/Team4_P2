@@ -15,35 +15,37 @@ namespace Team4_P2.Repo.Repository
         {
             _context = context;
         }
-        //user crud
-        public async Task<List<User>> GetUserAsync()
+        //Each object needs a GetAll, a get singular record, an add record, an edit record, and a delete record
+
+        //Admin crud
+        public async Task<List<Admin>> GetAdminAsync()
         {
-            return await _context.Users.ToListAsync();
+            return await _context.Admins.ToListAsync();
         }
-        public async Task<User> GetUserAsync(int assignmentId)
+        public async Task<Admin> GetAdminAsync(int assignmentId)
         {
-            return await _context.Users.FirstOrDefaultAsync(User=> User.UserId == assignmentId);
+            return await _context.Admins.FirstOrDefaultAsync(Admin => Admin.AdminId == assignmentId);
         }
-        public async Task<User> AddUser(User User)
+        public async Task<Admin> AddAdmin(Admin admin)
         {
-            _context.Add(User);
+            _context.Add(admin);
             _context.SaveChanges();
-            return await _context.Users.FirstOrDefaultAsync(tempUser=> tempUser.Equals(User));
+            return await _context.Admins.FirstOrDefaultAsync(tempAdmin => tempAdmin.Equals(admin));
         }
-        public async Task<User> EditUserScoreAsync(User user)
+        public async Task<Admin> EditAdminScoreAsync(Admin admin)
         {
-            var User= await _context.Users.FirstOrDefaultAsync(x => x.UserId == user.UserId);
-            User = user;
-            _context.Update(User);
+            var Admin = await _context.Admins.FirstOrDefaultAsync(x => x.AdminId == admin.AdminId);
+            Admin = admin;
+            _context.Update(Admin);
             _context.SaveChanges();
-            return await _context.Users.FirstOrDefaultAsync(x => x == user);
+            return await _context.Admins.FirstOrDefaultAsync(x => x == admin);
         }
-        public async Task<Boolean> DeleteUser(int assignmentId)
+        public async Task<Boolean> DeleteAdmin(int assignmentId)
         {
             try
             {
-                var User= await _context.Assignments.FirstOrDefaultAsync(User=> User.AssignmentID == assignmentId);
-                _context.Remove(User);
+                var Admin = await _context.Assignments.FirstOrDefaultAsync(Admin => Admin.AssignmentID == assignmentId);
+                _context.Remove(Admin);
                 _context.SaveChanges();
                 return true;
             }
@@ -53,7 +55,6 @@ namespace Team4_P2.Repo.Repository
             }
 
         }
-        //Each object needs a GetAll, a get singular record, an add record, an edit record, and a delete record
         //assignment crud
         public async Task<List<Assignment>> GetAssignmentsAsync()
         {
@@ -92,6 +93,7 @@ namespace Team4_P2.Repo.Repository
             }
             
         }
+        
         //Class crud
         public async Task<List<Class>> GetClasssAsync()
         {
@@ -276,6 +278,44 @@ namespace Team4_P2.Repo.Repository
             {
                 return false;
             }
+        }
+        //user crud
+        public async Task<List<User>> GetUserAsync()
+        {
+            return await _context.Users.ToListAsync();
+        }
+        public async Task<User> GetUserAsync(int assignmentId)
+        {
+            return await _context.Users.FirstOrDefaultAsync(User => User.UserId == assignmentId);
+        }
+        public async Task<User> AddUser(User User)
+        {
+            _context.Add(User);
+            _context.SaveChanges();
+            return await _context.Users.FirstOrDefaultAsync(tempUser => tempUser.Equals(User));
+        }
+        public async Task<User> EditUserScoreAsync(User user)
+        {
+            var User = await _context.Users.FirstOrDefaultAsync(x => x.UserId == user.UserId);
+            User = user;
+            _context.Update(User);
+            _context.SaveChanges();
+            return await _context.Users.FirstOrDefaultAsync(x => x == user);
+        }
+        public async Task<Boolean> DeleteUser(int assignmentId)
+        {
+            try
+            {
+                var User = await _context.Assignments.FirstOrDefaultAsync(User => User.AssignmentID == assignmentId);
+                _context.Remove(User);
+                _context.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
         }
     }
 }
