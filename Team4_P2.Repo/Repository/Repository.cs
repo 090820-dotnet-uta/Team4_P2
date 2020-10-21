@@ -16,34 +16,34 @@ namespace Team4_P2.Repo.Repository
             _context = context;
         }
         //user crud
-        public async Task<List<Assignment>> GetAssignmentsAsync()
+        public async Task<List<User>> GetUserAsync()
         {
-            return await _context.Assignments.ToListAsync();
+            return await _context.Users.ToListAsync();
         }
-        public async Task<Assignment> GetAssignmentAsync(int assignmentId)
+        public async Task<User> GetUserAsync(int assignmentId)
         {
-            return await _context.Assignments.FirstOrDefaultAsync(User=> User.AssignmentID == assignmentId);
+            return await _context.Users.FirstOrDefaultAsync(User=> User.UserId == assignmentId);
         }
-        public async Task<Assignment> AddAssignment(User User)
+        public async Task<User> AddUser(User User)
         {
             _context.Add(User);
             _context.SaveChanges();
-            return await _context.Assignments.FirstOrDefaultAsync(tempUser=> tempUser.Equals(User));
+            return await _context.Users.FirstOrDefaultAsync(tempUser=> tempUser.Equals(User));
         }
-        public async Task<Assignment> EditAssignmentScoreAsync(User User)
+        public async Task<User> EditUserScoreAsync(User user)
         {
-            var user= await _context.Assignments.FirstOrDefaultAsync(x => x.AssignmentID == User.UserId);
+            var User= await _context.Users.FirstOrDefaultAsync(x => x.UserId == user.UserId);
             User = user;
             _context.Update(User);
             _context.SaveChanges();
-            return await _context.Assignments.FirstOrDefaultAsync(x => x == User);
+            return await _context.Users.FirstOrDefaultAsync(x => x == user);
         }
-        public async Task<Boolean> DeleteAssignment(int assignmentId)
+        public async Task<Boolean> DeleteUser(int assignmentId)
         {
             try
             {
-                var User= await _context.Assignments.FirstOrDefaultAsync(User=> assignment.AssignmentID == assignmentId);
-                _context.Remove(assignment);
+                var User= await _context.Assignments.FirstOrDefaultAsync(User=> User.AssignmentID == assignmentId);
+                _context.Remove(User);
                 _context.SaveChanges();
                 return true;
             }

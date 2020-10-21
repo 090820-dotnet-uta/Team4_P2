@@ -10,7 +10,7 @@ using Team4_P2.Repo.Data;
 namespace Team4_P2.Repo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20201021164123_migrationOne")]
+    [Migration("20201021165210_migrationOne")]
     partial class migrationOne
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
