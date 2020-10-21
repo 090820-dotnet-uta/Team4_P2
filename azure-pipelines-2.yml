@@ -50,6 +50,13 @@ steps:
       arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
       zipAfterPublish: false
       modifyOutputPath: false
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(6fc81904-8f97-4b6e-917d-519941174623)'
+    appType: 'webApp'
+    WebAppName: 'P2SchoolApi'
+    packageForLinux: "$(Build.ArtifactStagingDirectory)"
 - task: SonarCloudPublish@1
   inputs:
     pollingTimeoutSec: '300'
