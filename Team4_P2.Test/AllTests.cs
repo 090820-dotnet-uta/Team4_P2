@@ -1,5 +1,8 @@
+using dummyapi;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Team4_P2.Models;
 using Team4_P2.Models.Models;
@@ -11,6 +14,24 @@ namespace Team4_P2.Test
 {
     public class AllTests
     {
+        [Fact]
+        public async void AdminControllerTest()
+        {
+            var options = new DbContextOptionsBuilder<AppDbContext>()
+                .UseInMemoryDatabase(databaseName: "yeet").Options;
+            using (var context = new AppDbContext(options))
+            {
+                Repository repo = new Repository(context);
+                var _adminController = new AdminController(repo);
+
+                await _adminController.CreateAdminAsync(new Admin());
+                await _adminController.CreateAdminAsync(new Admin());
+
+                ActionResult<List<Admin>> testList = _adminController.GetAll().Result;
+                //testList = testList.Value;
+                Assert.NotNull(testList);
+            }
+        }
         [Fact]
         public async void AddAdminToDb()
         {

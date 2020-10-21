@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\dummyapi\dummyapi.csproj" />
     <ProjectReference Include="..\Team4_P2.Models\Team4_P2.Models.csproj" />
     <ProjectReference Include="..\Team4_P2.Repo\Team4_P2.Repo.csproj" />
   </ItemGroup>
