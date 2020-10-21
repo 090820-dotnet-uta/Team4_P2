@@ -11,37 +11,37 @@ namespace Team4_P2.Test
 {
     public class AllTests
     {
-        //[Fact]
-        //public async void AddAdminToDb()
-        //{
-        //    var options = new DbContextOptionsBuilder<AppDbContext>()
-        //        .UseInMemoryDatabase(databaseName: "yeet").Options;
-        //    using (var context = new AppDbContext(options))
-        //    {
-        //        Repository repo = new Repository(context);
-        //        Admin Admin = new Admin();
+          [Fact]
+          public async void AddAdminToDb()
+          {
+              var options = new DbContextOptionsBuilder<AppDbContext>()
+                  .UseInMemoryDatabase(databaseName: "yeet").Options;
+              using (var context = new AppDbContext(options))
+              {
+                  Repository repo = new Repository(context);
+                  Admin Admin = new Admin();
 
-        //        Admin = await repo.AddAdmin(Admin);
+                  Admin = await repo.AddAdmin(Admin);
 
-        //        Assert.True(context.Admins.Contains(Admin));
-        //    }
-        //}
-        //[Fact]
-        //public async void DeleteAdminToDb()
-        //{
-        //    var options = new DbContextOptionsBuilder<AppDbContext>()
-        //        .UseInMemoryDatabase(databaseName: "yeet").Options;
-        //    using (var context = new AppDbContext(options))
-        //    {
-        //        Repository repo = new Repository(context);
-        //        Admin Admin = new Admin();
+                  Assert.True(context.Admins.Contains(Admin));
+              }
+          }
+          [Fact]
+          public async void DeleteAdminToDb()
+          {
+              var options = new DbContextOptionsBuilder<AppDbContext>()
+                  .UseInMemoryDatabase(databaseName: "yeet").Options;
+              using (var context = new AppDbContext(options))
+              {
+                  Repository repo = new Repository(context);
+                  Admin Admin = new Admin();
 
-        //        Admin = await repo.AddAdmin(Admin);
+                  Admin = await repo.AddAdmin(Admin);
 
-        //        bool rip = await repo.DeleteAdmin(Admin.AdminId);
-        //        Assert.False(context.Admins.Contains(Admin));
-        //    }
-        //}
+                  bool rip = await repo.DeleteAdmin(Admin);
+                  Assert.False(context.Admins.Contains(Admin));
+              }
+          }
           [Fact]
           public async void AddAssignmentToDb()
           {

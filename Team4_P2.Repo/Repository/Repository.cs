@@ -40,11 +40,11 @@ namespace Team4_P2.Repo.Repository
             _context.SaveChanges();
             return await _context.Admins.FirstOrDefaultAsync(x => x == admin);
         }
-        public async Task<Boolean> DeleteAdmin(int assignmentId)
+        public async Task<Boolean> DeleteAdmin(Admin admin)
         {
             try
             {
-                var Admin = await _context.Assignments.FirstOrDefaultAsync(Admin => Admin.AssignmentId == assignmentId);
+                var Admin = await _context.Assignments.FirstOrDefaultAsync(Admin => Admin.AssignmentId == admin.AdminId);
                 _context.Remove(Admin);
                 _context.SaveChanges();
                 return true;
