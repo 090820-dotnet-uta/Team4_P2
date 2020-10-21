@@ -44,7 +44,7 @@ namespace Team4_P2.Repo.Repository
         {
             try
             {
-                var Admin = await _context.Assignments.FirstOrDefaultAsync(Admin => Admin.AssignmentID == assignmentId);
+                var Admin = await _context.Assignments.FirstOrDefaultAsync(Admin => Admin.AssignmentId == assignmentId);
                 _context.Remove(Admin);
                 _context.SaveChanges();
                 return true;
@@ -62,7 +62,7 @@ namespace Team4_P2.Repo.Repository
         }
         public async Task<Assignment> GetAssignmentAsync(int assignmentId)
         {
-            return await _context.Assignments.FirstOrDefaultAsync(assignment => assignment.AssignmentID == assignmentId);
+            return await _context.Assignments.FirstOrDefaultAsync(assignment => assignment.AssignmentId == assignmentId);
         }
         public async Task<Assignment> AddAssignment(Assignment assignment)
         {
@@ -72,7 +72,7 @@ namespace Team4_P2.Repo.Repository
         }
         public async Task<Assignment> EditAssignmentScoreAsync(Assignment assignment)
         {
-            var Assignment = await _context.Assignments.FirstOrDefaultAsync(x => x.AssignmentID == assignment.AssignmentID);
+            var Assignment = await _context.Assignments.FirstOrDefaultAsync(x => x.AssignmentId == assignment.AssignmentId);
             Assignment = assignment;
             _context.Update(Assignment);
             _context.SaveChanges();
@@ -82,7 +82,7 @@ namespace Team4_P2.Repo.Repository
         {
             try 
             {
-                var assignment = await _context.Assignments.FirstOrDefaultAsync(assignment => assignment.AssignmentID == assignmentId);
+                var assignment = await _context.Assignments.FirstOrDefaultAsync(assignment => assignment.AssignmentId == assignmentId);
                 _context.Remove(assignment);
                 _context.SaveChanges();
                 return true;
@@ -101,7 +101,7 @@ namespace Team4_P2.Repo.Repository
         }
         public async Task<Class> GetClassAsync(int ClassId)
         {
-            return await _context.Classes.FirstOrDefaultAsync(Class => Class.ClassID == ClassId);
+            return await _context.Classes.FirstOrDefaultAsync(Class => Class.ClassId == ClassId);
         }
         public async Task<Class> AddClass(Class Class)
         {
@@ -111,7 +111,7 @@ namespace Team4_P2.Repo.Repository
         }
         public async Task<Class> EditClassScoreAsync(Class Class)
         {
-            var target = await _context.Classes.FindAsync(Class.ClassID);
+            var target = await _context.Classes.FindAsync(Class.ClassId);
             target = Class;
             _context.Update(target);
             _context.SaveChanges();
@@ -121,7 +121,7 @@ namespace Team4_P2.Repo.Repository
         {
             try
             {
-                var Class = await _context.Classes.FirstOrDefaultAsync(Class => Class.ClassID == ClassId);
+                var Class = await _context.Classes.FirstOrDefaultAsync(Class => Class.ClassId == ClassId);
                 _context.Remove(Class);
                 _context.SaveChanges();
                 return true;
@@ -138,7 +138,7 @@ namespace Team4_P2.Repo.Repository
         }
         public async Task<Course> GetCourseAsync(int courseId)
         {
-            return await _context.Courses.FirstOrDefaultAsync(course => course.CourseID == courseId);
+            return await _context.Courses.FirstOrDefaultAsync(Course => Course.CourseId == courseId);
         }
         public async Task<Course> AddCourse(Course course)
         {
@@ -148,7 +148,7 @@ namespace Team4_P2.Repo.Repository
         }
         public async Task<Course> EditCourseScoreAsync(Course course)
         {
-            var target = await _context.Courses.FindAsync(course.CourseID);
+            var target = await _context.Courses.FindAsync(course.CourseId);
             target = course;
             _context.Update(target);
             _context.SaveChanges();
@@ -158,7 +158,7 @@ namespace Team4_P2.Repo.Repository
         {
             try
             {
-                var Course = await _context.Courses.FirstOrDefaultAsync(course => course.CourseID == CourseId);
+                var Course = await _context.Courses.FirstOrDefaultAsync(Course => Course.CourseId == CourseId);
                 _context.Remove(Course);
                 _context.SaveChanges();
                 return true;
@@ -175,7 +175,7 @@ namespace Team4_P2.Repo.Repository
         }
         public async Task<Enrollment> GetEnrollmentAsync(int EnrollmentId)
         {
-            return await _context.Enrollments.FirstOrDefaultAsync(Enrollment => Enrollment.EnrollmentID == EnrollmentId);
+            return await _context.Enrollments.FirstOrDefaultAsync(Enrollment => Enrollment.EnrollmentId == EnrollmentId);
         }
         public async Task<Enrollment> AddEnrollment(Enrollment Enrollment)
         {
@@ -185,7 +185,7 @@ namespace Team4_P2.Repo.Repository
         }
         public async Task<Enrollment> EditEnrollmentScoreAsync(Enrollment Enrollment)
         {
-            var target = await _context.Enrollments.FindAsync(Enrollment.EnrollmentID);
+            var target = await _context.Enrollments.FindAsync(Enrollment.EnrollmentId);
             target = Enrollment;
             _context.Update(target);
             _context.SaveChanges();
@@ -195,7 +195,7 @@ namespace Team4_P2.Repo.Repository
         {
             try
             {
-                var Enrollment = await _context.Enrollments.FirstOrDefaultAsync(Enrollment => Enrollment.EnrollmentID == EnrollmentId);
+                var Enrollment = await _context.Enrollments.FirstOrDefaultAsync(Enrollment => Enrollment.EnrollmentId == EnrollmentId);
                 _context.Remove(Enrollment);
                 _context.SaveChanges();
                 return true;
@@ -249,7 +249,7 @@ namespace Team4_P2.Repo.Repository
         }
         public async Task<Teacher> GetTeacherAsync(int TeacherId)
         {
-            return await _context.Teachers.FirstOrDefaultAsync(Teacher => Teacher.TeacherID == TeacherId);
+            return await _context.Teachers.FirstOrDefaultAsync(Teacher => Teacher.TeacherId == TeacherId);
         }
         public async Task<Teacher> AddTeacher(Teacher Teacher)
         {
@@ -259,7 +259,7 @@ namespace Team4_P2.Repo.Repository
         }
         public async Task<Teacher> EditTeacherScoreAsync(Teacher Teacher)
         {
-            var target = await _context.Teachers.FindAsync(Teacher.TeacherID);
+            var target = await _context.Teachers.FindAsync(Teacher.TeacherId);
             target = Teacher;
             _context.Update(target);
             _context.SaveChanges();
@@ -269,7 +269,7 @@ namespace Team4_P2.Repo.Repository
         {
             try
             {
-                var Teacher = await _context.Teachers.FirstOrDefaultAsync(Teacher => Teacher.TeacherID == TeacherId);
+                var Teacher = await _context.Teachers.FirstOrDefaultAsync(Teacher => Teacher.TeacherId == TeacherId);
                 _context.Remove(Teacher);
                 _context.SaveChanges();
                 return true;
@@ -306,7 +306,7 @@ namespace Team4_P2.Repo.Repository
         {
             try
             {
-                var User = await _context.Assignments.FirstOrDefaultAsync(User => User.AssignmentID == assignmentId);
+                var User = await _context.Assignments.FirstOrDefaultAsync(User => User.AssignmentId == assignmentId);
                 _context.Remove(User);
                 _context.SaveChanges();
                 return true;

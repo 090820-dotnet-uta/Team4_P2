@@ -8,9 +8,9 @@ namespace Team4_P2.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
-        public int AssignmentID { get; set; }
+        public int AssignmentId { get; set; }
         [ForeignKey("Enrollment")]
-        public int EnrollmentID { get; set; }
+        public int EnrollmentId { get; set; }
         public Enrollment Enrollment { get; set; }
         public int? Grade { get; set; }
         public string Title { get; set; }

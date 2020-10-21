@@ -38,7 +38,7 @@ namespace dummyapi
         }
 
         // POST api/<UserController>
-        [HttpPost]//Add
+        [HttpPost("add")]//Add
         public async Task<ActionResult<User>> CreateUserAsync(User user)
         {
             try
