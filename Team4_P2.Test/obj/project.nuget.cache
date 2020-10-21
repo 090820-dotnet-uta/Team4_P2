@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "gquI8G/TjJPBvAav+rg9GODmLPtpMIX3dQ1chM2t0eXckgf8d7VGAwMeK8ccZ1xnPVoHWRiLy7IW2WZG/w7sfg==",
+  "dgSpecHash": "DpFLRM44sX5+DXDwpuzvGmLWP4lHoQ1gZwnmANAAcQqYx/S4QyrVgcyn/GDWS8eZRyhelwsjsnYWZK6cIw+mvQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Earl\\Desktop\\RevatureV2\\Team4_P2\\Team4_P2.Test\\Team4_P2.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Earl\\.nuget\\packages\\coverlet.collector\\1.2.0\\coverlet.collector.1.2.0.nupkg.sha512",
+    "C:\\Users\\Earl\\.nuget\\packages\\coverlet.msbuild\\2.9.0\\coverlet.msbuild.2.9.0.nupkg.sha512",
     "C:\\Users\\Earl\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Earl\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Users\\Earl\\.nuget\\packages\\microsoft.codecoverage\\16.5.0\\microsoft.codecoverage.16.5.0.nupkg.sha512",

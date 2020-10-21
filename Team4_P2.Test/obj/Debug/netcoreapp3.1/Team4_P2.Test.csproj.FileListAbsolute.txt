@@ -135,6 +135,5 @@ C:\Users\Earl\Desktop\RevatureV2\Team4_P2\Team4_P2.Test\obj\Debug\netcoreapp3.1\
 C:\Users\Earl\Desktop\RevatureV2\Team4_P2\Team4_P2.Test\obj\Debug\netcoreapp3.1\Team4_P2.Test.genruntimeconfig.cache
 C:\Users\Earl\Desktop\RevatureV2\Team4_P2\Team4_P2.Test\bin\Debug\netcoreapp3.1\Team4_P2.Test.pdb
 C:\Users\Earl\Desktop\RevatureV2\Team4_P2\Team4_P2.Test\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.InMemory.dll
-C:\Users\Earl\Desktop\RevatureV2\Team4_P2\Team4_P2.Test\obj\Debug\netcoreapp3.1\Team4_P2.Test.csproj.CoreCompileInputs.cache
 C:\Users\Earl\Desktop\RevatureV2\Team4_P2\Team4_P2.Test\obj\Debug\netcoreapp3.1\Team4_P2.Test.dll
 C:\Users\Earl\Desktop\RevatureV2\Team4_P2\Team4_P2.Test\obj\Debug\netcoreapp3.1\Team4_P2.Test.pdb
