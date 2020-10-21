@@ -10,7 +10,7 @@ using Team4_P2.Repo.Data;
 namespace Team4_P2.Repo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20201018182449_migrationOne")]
+    [Migration("20201021164123_migrationOne")]
     partial class migrationOne
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -62,6 +62,8 @@ namespace Team4_P2.Repo.Migrations
 
                     b.HasKey("ClassID");
 
+                    b.HasIndex("CourseID");
+
                     b.HasIndex("TeacherID");
 
                     b.ToTable("Classes");
@@ -104,9 +106,67 @@ namespace Team4_P2.Repo.Migrations
                     b.ToTable("Enrollments");
                 });
 
+            modelBuilder.Entity("Team4_P2.Models.Models.Admin", b =>
+                {
+                    b.Property<int>("AdminId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.HasKey("AdminId");
+
+                    b.ToTable("Admins");
+                });
+
+            modelBuilder.Entity("Team4_P2.Models.Models.User", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AdminId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("StudentId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TeacherID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId");
+
+                    b.HasIndex("AdminId");
+
+                    b.HasIndex("StudentId");
+
+                    b.HasIndex("TeacherID");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("Team4_P2.Models.Student", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("StudentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -126,7 +186,7 @@ namespace Team4_P2.Repo.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("StudentId");
 
                     b.ToTable("Students");
                 });
@@ -155,8 +215,8 @@ namespace Team4_P2.Repo.Migrations
 
             modelBuilder.Entity("Team4_P2.Models.Assignment", b =>
                 {
-                    b.HasOne("Team4_P2.Models.Enrollment", null)
-                        .WithMany("Assignments")
+                    b.HasOne("Team4_P2.Models.Enrollment", "Enrollment")
+                        .WithMany()
                         .HasForeignKey("EnrollmentID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -164,7 +224,13 @@ namespace Team4_P2.Repo.Migrations
 
             modelBuilder.Entity("Team4_P2.Models.Class", b =>
                 {
-                    b.HasOne("Team4_P2.Models.Teacher", null)
+                    b.HasOne("Team4_P2.Models.Course", "Course")
+                        .WithMany()
+                        .HasForeignKey("CourseID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Team4_P2.Models.Teacher", "Teacher")
                         .WithMany("Classes")
                         .HasForeignKey("TeacherID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -173,17 +239,32 @@ namespace Team4_P2.Repo.Migrations
 
             modelBuilder.Entity("Team4_P2.Models.Enrollment", b =>
                 {
-                    b.HasOne("Team4_P2.Models.Class", null)
-                        .WithMany("Enrollments")
+                    b.HasOne("Team4_P2.Models.Class", "Class")
+                        .WithMany()
                         .HasForeignKey("ClassID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Team4_P2.Models.Student", "Student")
-                        .WithMany("Enrollments")
+                        .WithMany()
                         .HasForeignKey("StudentID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Team4_P2.Models.Models.User", b =>
+                {
+                    b.HasOne("Team4_P2.Models.Models.Admin", "Admin")
+                        .WithMany()
+                        .HasForeignKey("AdminId");
+
+                    b.HasOne("Team4_P2.Models.Student", "Student")
+                        .WithMany()
+                        .HasForeignKey("StudentId");
+
+                    b.HasOne("Team4_P2.Models.Teacher", "Teacher")
+                        .WithMany()
+                        .HasForeignKey("TeacherID");
                 });
 #pragma warning restore 612, 618
         }

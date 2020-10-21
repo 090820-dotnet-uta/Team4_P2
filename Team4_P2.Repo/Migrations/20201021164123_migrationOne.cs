@@ -7,6 +7,18 @@ namespace Team4_P2.Repo.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Admins",
+                columns: table => new
+                {
+                    AdminId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Admins", x => x.AdminId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Courses",
                 columns: table => new
                 {
@@ -23,7 +35,7 @@ namespace Team4_P2.Repo.Migrations
                 name: "Students",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
+                    StudentId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     LastName = table.Column<string>(nullable: false),
                     FirstName = table.Column<string>(nullable: false),
@@ -32,7 +44,7 @@ namespace Team4_P2.Repo.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Students", x => x.ID);
+                    table.PrimaryKey("PK_Students", x => x.StudentId);
                 });
 
             migrationBuilder.CreateTable(
@@ -64,11 +76,56 @@ namespace Team4_P2.Repo.Migrations
                 {
                     table.PrimaryKey("PK_Classes", x => x.ClassID);
                     table.ForeignKey(
+                        name: "FK_Classes_Courses_CourseID",
+                        column: x => x.CourseID,
+                        principalTable: "Courses",
+                        principalColumn: "CourseID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_Classes_Teachers_TeacherID",
                         column: x => x.TeacherID,
                         principalTable: "Teachers",
                         principalColumn: "TeacherID",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    UserId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Role = table.Column<int>(nullable: false),
+                    UserName = table.Column<string>(nullable: true),
+                    Password = table.Column<string>(nullable: true),
+                    StudentId = table.Column<int>(nullable: true),
+                    TeacherID = table.Column<int>(nullable: true),
+                    AdminId = table.Column<int>(nullable: true),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
+                    Gender = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.UserId);
+                    table.ForeignKey(
+                        name: "FK_Users_Admins_AdminId",
+                        column: x => x.AdminId,
+                        principalTable: "Admins",
+                        principalColumn: "AdminId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Users_Students_StudentId",
+                        column: x => x.StudentId,
+                        principalTable: "Students",
+                        principalColumn: "StudentId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Users_Teachers_TeacherID",
+                        column: x => x.TeacherID,
+                        principalTable: "Teachers",
+                        principalColumn: "TeacherID",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -93,7 +150,7 @@ namespace Team4_P2.Repo.Migrations
                         name: "FK_Enrollments_Students_StudentID",
                         column: x => x.StudentID,
                         principalTable: "Students",
-                        principalColumn: "ID",
+                        principalColumn: "StudentId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -124,6 +181,11 @@ namespace Team4_P2.Repo.Migrations
                 column: "EnrollmentID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Classes_CourseID",
+                table: "Classes",
+                column: "CourseID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Classes_TeacherID",
                 table: "Classes",
                 column: "TeacherID");
@@ -137,6 +199,21 @@ namespace Team4_P2.Repo.Migrations
                 name: "IX_Enrollments_StudentID",
                 table: "Enrollments",
                 column: "StudentID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_AdminId",
+                table: "Users",
+                column: "AdminId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_StudentId",
+                table: "Users",
+                column: "StudentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_TeacherID",
+                table: "Users",
+                column: "TeacherID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -145,16 +222,22 @@ namespace Team4_P2.Repo.Migrations
                 name: "Assignments");
 
             migrationBuilder.DropTable(
-                name: "Courses");
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Enrollments");
+
+            migrationBuilder.DropTable(
+                name: "Admins");
 
             migrationBuilder.DropTable(
                 name: "Classes");
 
             migrationBuilder.DropTable(
                 name: "Students");
+
+            migrationBuilder.DropTable(
+                name: "Courses");
 
             migrationBuilder.DropTable(
                 name: "Teachers");
