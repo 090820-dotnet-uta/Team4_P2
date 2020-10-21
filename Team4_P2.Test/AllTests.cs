@@ -77,37 +77,37 @@ namespace Team4_P2.Test
         //        Assert.False(context.Assignments.Contains(Assignment));
         //    }
         //}
-        //[Fact]
-        //public async void AddClassToDb()
-        //{
-        //    var options = new DbContextOptionsBuilder<AppDbContext>()
-        //        .UseInMemoryDatabase(databaseName: "yeet").Options;
-        //    using (var context = new AppDbContext(options))
-        //    {
-        //        Repository repo = new Repository(context);
-        //        Class Class = new Class();
+          [Fact]
+          public async void AddClassToDb()
+          {
+              var options = new DbContextOptionsBuilder<AppDbContext>()
+                  .UseInMemoryDatabase(databaseName: "yeet").Options;
+              using (var context = new AppDbContext(options))
+              {
+                  Repository repo = new Repository(context);
+                  Class Class = new Class();
 
-        //        Class = await repo.AddClass(Class);
+                  Class = await repo.AddClass(Class);
 
-        //        Assert.True(context.Classes.Contains(Class));
-        //    }
-        //}
-        //[Fact]
-        //public async void DeleteClassToDb()
-        //{
-        //    var options = new DbContextOptionsBuilder<AppDbContext>()
-        //        .UseInMemoryDatabase(databaseName: "yeet").Options;
-        //    using (var context = new AppDbContext(options))
-        //    {
-        //        Repository repo = new Repository(context);
-        //        Class Class = new Class();
+                  Assert.True(context.Classes.Contains(Class));
+              }
+          }
+          [Fact]
+          public async void DeleteClassToDb()
+          {
+              var options = new DbContextOptionsBuilder<AppDbContext>()
+                  .UseInMemoryDatabase(databaseName: "yeet").Options;
+              using (var context = new AppDbContext(options))
+              {
+                  Repository repo = new Repository(context);
+                  Class Class = new Class();
 
-        //        Class = await repo.AddClass(Class);
+                  Class = await repo.AddClass(Class);
 
-        //        bool rip = await repo.DeleteClass(Class.ClassId);
-        //        Assert.False(context.Classes.Contains(Class));
-        //    }
-        //}
+                  bool rip = await repo.DeleteClass(Class.ClassId);
+                  Assert.False(context.Classes.Contains(Class));
+              }
+          }
         [Fact]
         public async void AddCourseToDb()
         {
