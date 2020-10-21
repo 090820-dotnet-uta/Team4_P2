@@ -11,6 +11,7 @@ namespace Team4_P2.Models
         public int AssignmentID { get; set; }
         [ForeignKey("Enrollment")]
         public int EnrollmentID { get; set; }
+        public Enrollment Enrollment { get; set; }
         public int? Grade { get; set; }
         public string Title { get; set; }
     }

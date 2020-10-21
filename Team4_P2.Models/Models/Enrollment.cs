@@ -11,9 +11,10 @@ namespace Team4_P2.Models
         public int EnrollmentID { get; set; }
         [ForeignKey("ClassID")]
         public int ClassID { get; set; }
+        public Class Class { get; set; }
         [ForeignKey("StudentID")]
         public int StudentID { get; set; }
-        public virtual Student Student { get; set; }
-        public virtual ICollection<Assignment> Assignments { get; set; }
+        public Student Student { get; set; }
+
     }
 }

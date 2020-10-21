@@ -7,7 +7,6 @@ namespace Team4_P2.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-
         public int CourseID { get; set; }
         public string Title { get; set; }
     }
