@@ -28,8 +28,10 @@ namespace Team4_P2.Test
                 await _adminController.CreateAdminAsync(new Admin());
 
                 ActionResult<List<Admin>> testList = _adminController.GetAll().Result;
-                //testList = testList.Value;
+                testList = testList.Value;
                 Assert.NotNull(testList);
+                ActionResult<Admin> testList2 = _adminController.Get(1).Result;
+                Assert.NotNull(testList2);
             }
         }
         [Fact]
