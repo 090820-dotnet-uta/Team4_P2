@@ -28,8 +28,8 @@ namespace dummyapi
         {
             return await _repository.GetCoursesAsync();
         }
-        [HttpGet("Get/{id}")]
-        public async Task<ActionResult<Course>> GetCourse(int id)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Course>> Get(int id)
         {
             return await _repository.GetCourseAsync(id);
         }

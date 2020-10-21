@@ -29,8 +29,8 @@ namespace dummyapi
         {
             return await _repository.GetClasssAsync();
         }
-        [HttpGet("Get/{id}")]
-        public async Task<ActionResult<Class>> GetClass(int id)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Class>> Get(int id)
         {
             return await _repository.GetClassAsync(id);
         }

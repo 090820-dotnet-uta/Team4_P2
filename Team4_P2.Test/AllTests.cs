@@ -23,15 +23,49 @@ namespace Team4_P2.Test
             {
                 Repository repo = new Repository(context);
                 var _adminController = new AdminController(repo);
-
-                await _adminController.CreateAdminAsync(new Admin());
-                await _adminController.CreateAdminAsync(new Admin());
-
+                Admin tempAdminOne = new Admin();
+                tempAdminOne.AdminId = 1;
+                Admin tempAdminTwo = new Admin();
+                tempAdminOne.AdminId = 2;
+                await _adminController.CreateAdminAsync(tempAdminOne);
+                await _adminController.CreateAdminAsync(tempAdminTwo);
+                
                 ActionResult<List<Admin>> testList = _adminController.GetAll().Result;
                 testList = testList.Value;
                 Assert.NotNull(testList);
                 ActionResult<Admin> testList2 = _adminController.Get(1).Result;
                 Assert.NotNull(testList2);
+
+            }
+        }
+        [Fact]
+        public async void CourseControllerTest()
+        {
+            var options = new DbContextOptionsBuilder<AppDbContext>()
+                .UseInMemoryDatabase(databaseName: "yeet").Options;
+            using (var context = new AppDbContext(options))
+            {
+                Repository repo = new Repository(context);
+                var _CourseController = new CourseController(repo);
+                Course tempCourseOne = new Course();
+                tempCourseOne.Title = "First Course";
+                
+                Course tempCourseTwo = new Course();
+                tempCourseOne.Title = "Second Course";
+                await _CourseController.CreateCourseAsync(tempCourseOne);
+                await _CourseController.CreateCourseAsync(tempCourseTwo);
+
+                ActionResult<List<Course>> testList = _CourseController.GetAll().Result;
+                testList = testList.Value;
+                Assert.NotNull(testList);
+                //Assert.Equal("Second Course",)
+                ActionResult<Course> testList2 = _CourseController.Get(1).Result;
+                Assert.NotNull(testList2);
+                tempCourseTwo.Title = "third";
+                await _CourseController.PutCourse(tempCourseTwo);
+                var readRecord = _CourseController.Get(2).Result.Value;
+                Assert.Equal("third", readRecord.Title);
+
             }
         }
         [Fact]
