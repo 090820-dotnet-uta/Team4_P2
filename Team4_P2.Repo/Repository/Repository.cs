@@ -148,9 +148,9 @@ namespace Team4_P2.Repo.Repository
         }
         public async Task<Course> EditCourseScoreAsync(Course course)
         {
-            var target = await _context.Courses.FindAsync(course.CourseId);
-            target = course;
-            _context.Update(target);
+            //var target = await _context.Courses.FindAsync(course.CourseId);
+            //target = course;
+            _context.Update(course);
             _context.SaveChanges();
             return await _context.Courses.FirstOrDefaultAsync(tempCourse => tempCourse.Equals(course));
         }
