@@ -10,7 +10,7 @@ using Team4_P2.Repo.Data;
 namespace Team4_P2.Repo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20201021165210_migrationOne")]
+    [Migration("20201021172907_migrationOne")]
     partial class migrationOne
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,12 +23,12 @@ namespace Team4_P2.Repo.Migrations
 
             modelBuilder.Entity("Team4_P2.Models.Assignment", b =>
                 {
-                    b.Property<int>("AssignmentID")
+                    b.Property<int>("AssignmentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("EnrollmentID")
+                    b.Property<int>("EnrollmentId")
                         .HasColumnType("int");
 
                     b.Property<int?>("Grade")
@@ -37,41 +37,41 @@ namespace Team4_P2.Repo.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("AssignmentID");
+                    b.HasKey("AssignmentId");
 
-                    b.HasIndex("EnrollmentID");
+                    b.HasIndex("EnrollmentId");
 
                     b.ToTable("Assignments");
                 });
 
             modelBuilder.Entity("Team4_P2.Models.Class", b =>
                 {
-                    b.Property<int>("ClassID")
+                    b.Property<int>("ClassId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CourseID")
+                    b.Property<int>("CourseId")
                         .HasColumnType("int");
 
                     b.Property<string>("Location")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TeacherID")
+                    b.Property<int>("TeacherId")
                         .HasColumnType("int");
 
-                    b.HasKey("ClassID");
+                    b.HasKey("ClassId");
 
-                    b.HasIndex("CourseID");
+                    b.HasIndex("CourseId");
 
-                    b.HasIndex("TeacherID");
+                    b.HasIndex("TeacherId");
 
                     b.ToTable("Classes");
                 });
 
             modelBuilder.Entity("Team4_P2.Models.Course", b =>
                 {
-                    b.Property<int>("CourseID")
+                    b.Property<int>("CourseId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -79,29 +79,29 @@ namespace Team4_P2.Repo.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CourseID");
+                    b.HasKey("CourseId");
 
                     b.ToTable("Courses");
                 });
 
             modelBuilder.Entity("Team4_P2.Models.Enrollment", b =>
                 {
-                    b.Property<int>("EnrollmentID")
+                    b.Property<int>("EnrollmentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ClassID")
+                    b.Property<int>("ClassId")
                         .HasColumnType("int");
 
-                    b.Property<int>("StudentID")
+                    b.Property<int>("StudentId")
                         .HasColumnType("int");
 
-                    b.HasKey("EnrollmentID");
+                    b.HasKey("EnrollmentId");
 
-                    b.HasIndex("ClassID");
+                    b.HasIndex("ClassId");
 
-                    b.HasIndex("StudentID");
+                    b.HasIndex("StudentId");
 
                     b.ToTable("Enrollments");
                 });
@@ -147,7 +147,7 @@ namespace Team4_P2.Repo.Migrations
                     b.Property<int?>("StudentId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TeacherID")
+                    b.Property<int?>("TeacherId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserName")
@@ -159,7 +159,7 @@ namespace Team4_P2.Repo.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.HasIndex("TeacherID");
+                    b.HasIndex("TeacherId");
 
                     b.ToTable("Users");
                 });
@@ -193,7 +193,7 @@ namespace Team4_P2.Repo.Migrations
 
             modelBuilder.Entity("Team4_P2.Models.Teacher", b =>
                 {
-                    b.Property<int>("TeacherID")
+                    b.Property<int>("TeacherId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -208,7 +208,7 @@ namespace Team4_P2.Repo.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("TeacherID");
+                    b.HasKey("TeacherId");
 
                     b.ToTable("Teachers");
                 });
@@ -217,7 +217,7 @@ namespace Team4_P2.Repo.Migrations
                 {
                     b.HasOne("Team4_P2.Models.Enrollment", "Enrollment")
                         .WithMany()
-                        .HasForeignKey("EnrollmentID")
+                        .HasForeignKey("EnrollmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -226,13 +226,13 @@ namespace Team4_P2.Repo.Migrations
                 {
                     b.HasOne("Team4_P2.Models.Course", "Course")
                         .WithMany()
-                        .HasForeignKey("CourseID")
+                        .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Team4_P2.Models.Teacher", "Teacher")
                         .WithMany("Classes")
-                        .HasForeignKey("TeacherID")
+                        .HasForeignKey("TeacherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -241,13 +241,13 @@ namespace Team4_P2.Repo.Migrations
                 {
                     b.HasOne("Team4_P2.Models.Class", "Class")
                         .WithMany()
-                        .HasForeignKey("ClassID")
+                        .HasForeignKey("ClassId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Team4_P2.Models.Student", "Student")
                         .WithMany()
-                        .HasForeignKey("StudentID")
+                        .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -264,7 +264,7 @@ namespace Team4_P2.Repo.Migrations
 
                     b.HasOne("Team4_P2.Models.Teacher", "Teacher")
                         .WithMany()
-                        .HasForeignKey("TeacherID");
+                        .HasForeignKey("TeacherId");
                 });
 #pragma warning restore 612, 618
         }

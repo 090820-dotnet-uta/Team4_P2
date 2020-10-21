@@ -137,7 +137,7 @@ namespace Team4_P2.Test
 
                 course = await repo.AddCourse(course);
 
-                bool rip = await repo.DeleteCourse(course.CourseID);
+                bool rip = await repo.DeleteCourse(course.CourseId);
                 Assert.False(context.Courses.Contains(course));
             }
         }
