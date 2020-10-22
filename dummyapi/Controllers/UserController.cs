@@ -57,6 +57,7 @@ namespace dummyapi
         }
 
         // PUT api/<UserController>/5
+        [HttpPut]
         public async Task<ActionResult<User>> PutUser(User User)
         {
             try
