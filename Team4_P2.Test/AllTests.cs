@@ -363,5 +363,15 @@ namespace Team4_P2.Test
                 Assert.False(context.Users.Contains(User));
             }
         }
+        [Fact]
+        public async void makeModels()
+        {
+            Assignment assignment = new Assignment();
+            assignment.AssignmentId = 1;
+            assignment.EnrollmentId = 1;
+            assignment.Grade = 70;
+            assignment.Title = "test";
+            Assert.Equal(70, assignment.Grade);
+        }
     }
 }
