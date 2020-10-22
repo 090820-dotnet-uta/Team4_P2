@@ -34,9 +34,7 @@ namespace Team4_P2.Repo.Repository
         }
         public async Task<Admin> EditAdminScoreAsync(Admin admin)
         {
-            var Admin = await _context.Admins.FirstOrDefaultAsync(x => x.AdminId == admin.AdminId);
-            Admin = admin;
-            _context.Update(Admin);
+            _context.Update(admin);
             _context.SaveChanges();
             return await _context.Admins.FirstOrDefaultAsync(x => x == admin);
         }
@@ -44,7 +42,6 @@ namespace Team4_P2.Repo.Repository
         {
             try
             {
-                var Admin = await _context.Assignments.FirstOrDefaultAsync(Admin => Admin.AssignmentId == admin.AdminId);
                 _context.Remove(admin);
                 _context.SaveChanges();
                 return true;
@@ -72,9 +69,7 @@ namespace Team4_P2.Repo.Repository
         }
         public async Task<Assignment> EditAssignmentScoreAsync(Assignment assignment)
         {
-            var Assignment = await _context.Assignments.FirstOrDefaultAsync(x => x.AssignmentId == assignment.AssignmentId);
-            Assignment = assignment;
-            _context.Update(Assignment);
+            _context.Update(assignment);
             _context.SaveChanges();
             return await _context.Assignments.FirstOrDefaultAsync(x => x == assignment);
         }
@@ -111,9 +106,7 @@ namespace Team4_P2.Repo.Repository
         }
         public async Task<Class> EditClassScoreAsync(Class Class)
         {
-            var target = await _context.Classes.FindAsync(Class.ClassId);
-            target = Class;
-            _context.Update(target);
+            _context.Update(Class);
             _context.SaveChanges();
             return await _context.Classes.FirstOrDefaultAsync(tempClass => tempClass.Equals(Class));
         }
@@ -183,13 +176,11 @@ namespace Team4_P2.Repo.Repository
             _context.SaveChanges();
             return await _context.Enrollments.FirstOrDefaultAsync(tempEnrollment => tempEnrollment.Equals(Enrollment));
         }
-        public async Task<Enrollment> EditEnrollmentScoreAsync(Enrollment Enrollment)
+        public async Task<Enrollment> EditEnrollmentScoreAsync(Enrollment enrollment)
         {
-            var target = await _context.Enrollments.FindAsync(Enrollment.EnrollmentId);
-            target = Enrollment;
-            _context.Update(target);
+            _context.Update(enrollment);
             _context.SaveChanges();
-            return await _context.Enrollments.FirstOrDefaultAsync(tempEnrollment => tempEnrollment.Equals(Enrollment));
+            return await _context.Enrollments.FirstOrDefaultAsync(tempEnrollment => tempEnrollment.Equals(enrollment));
         }
         public async Task<Boolean> DeleteEnrollment(int EnrollmentId)
         {
@@ -257,13 +248,11 @@ namespace Team4_P2.Repo.Repository
             _context.SaveChanges();
             return await _context.Teachers.FirstOrDefaultAsync(tempTeacher => tempTeacher.Equals(Teacher));
         }
-        public async Task<Teacher> EditTeacherScoreAsync(Teacher Teacher)
+        public async Task<Teacher> EditTeacherScoreAsync(Teacher teacher)
         {
-            var target = await _context.Teachers.FindAsync(Teacher.TeacherId);
-            target = Teacher;
-            _context.Update(target);
+            _context.Update(teacher);
             _context.SaveChanges();
-            return await _context.Teachers.FirstOrDefaultAsync(tempTeacher => tempTeacher.Equals(Teacher));
+            return await _context.Teachers.FirstOrDefaultAsync(tempTeacher => tempTeacher.Equals(teacher));
         }
         public async Task<Boolean> DeleteTeacher(int TeacherId)
         {
@@ -327,9 +316,7 @@ namespace Team4_P2.Repo.Repository
         }
         public async Task<User> EditUserScoreAsync(User user)
         {
-            var User = await _context.Users.FirstOrDefaultAsync(x => x.UserId == user.UserId);
-            User = user;
-            _context.Update(User);
+            _context.Update(user);
             _context.SaveChanges();
             return await _context.Users.FirstOrDefaultAsync(x => x == user);
         }
