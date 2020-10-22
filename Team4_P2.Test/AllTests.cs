@@ -94,6 +94,34 @@ namespace Team4_P2.Test
             }
         }
         [Fact]
+        public async void AssignmentControllerTest()
+        {
+            var options = new DbContextOptionsBuilder<AppDbContext>()
+                .UseInMemoryDatabase(databaseName: "yeetus2").Options;
+            using (var context = new AppDbContext(options))
+            {
+                Repository repo = new Repository(context);
+                var _AssignmentController = new AssignmentController(repo);
+                Assignment tempAssignmentOne = new Assignment();
+                tempAssignmentOne.AssignmentId = 1;
+                tempAssignmentOne.EnrollmentId = 1;
+                tempAssignmentOne.Grade = 80;
+                tempAssignmentOne.Title = "test";
+
+                await _AssignmentController.CreateAssignmentAsync(tempAssignmentOne);
+
+                ActionResult<List<Assignment>> testList = _AssignmentController.GetAll().Result;
+                testList = testList.Value;
+                Assert.NotNull(testList);
+                ActionResult<Assignment> testList2 = _AssignmentController.Get(1).Result;
+                Assert.NotNull(testList2);
+                tempAssignmentOne.Title = "idk";
+                await repo.EditAssignmentScoreAsync(tempAssignmentOne);
+                Assert.Equal(80, tempAssignmentOne.Grade);
+                Assert.Equal("idk", (repo.GetAssignmentAsync(1).Result.Title));
+            }
+        }
+        [Fact]
         public async void AddAdminToDb()
         {
             var options = new DbContextOptionsBuilder<AppDbContext>()
