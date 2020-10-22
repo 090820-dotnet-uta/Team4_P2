@@ -42,7 +42,7 @@ namespace Team4_P2.Repo.Repository
         {
             try
             {
-                _context.Remove(admin);
+                _context.Admins.Remove(admin);
                 _context.SaveChanges();
                 return true;
             }
@@ -78,7 +78,7 @@ namespace Team4_P2.Repo.Repository
             try 
             {
                 var assignment = await _context.Assignments.FirstOrDefaultAsync(assignment => assignment.AssignmentId == assignmentId);
-                _context.Remove(assignment);
+                _context.Assignments.Remove(assignment);
                 _context.SaveChanges();
                 return true;
             }
@@ -115,7 +115,7 @@ namespace Team4_P2.Repo.Repository
             try
             {
                 var Class = await _context.Classes.FirstOrDefaultAsync(Class => Class.ClassId == ClassId);
-                _context.Remove(Class);
+                _context.Classes.Remove(Class);
                 _context.SaveChanges();
                 return true;
             }
@@ -150,7 +150,7 @@ namespace Team4_P2.Repo.Repository
             try
             {
                 var Course = await _context.Courses.FirstOrDefaultAsync(Course => Course.CourseId == CourseId);
-                _context.Remove(Course);
+                _context.Courses.Remove(Course);
                 _context.SaveChanges();
                 return true;
             }
@@ -185,7 +185,7 @@ namespace Team4_P2.Repo.Repository
             try
             {
                 var Enrollment = await _context.Enrollments.FirstOrDefaultAsync(Enrollment => Enrollment.EnrollmentId == EnrollmentId);
-                _context.Remove(Enrollment);
+                _context.Enrollments.Remove(Enrollment);
                 _context.SaveChanges();
                 return true;
             }
@@ -220,7 +220,7 @@ namespace Team4_P2.Repo.Repository
             try
             {
                 var Student = await _context.Students.FirstOrDefaultAsync(Student => Student.StudentId == StudentId);
-                _context.Remove(Student);
+                _context.Students.Remove(Student);
                 _context.SaveChanges();
                 return true;
             }
@@ -255,7 +255,7 @@ namespace Team4_P2.Repo.Repository
             try
             {
                 var Teacher = await _context.Teachers.FirstOrDefaultAsync(Teacher => Teacher.TeacherId == TeacherId);
-                _context.Remove(Teacher);
+                _context.Teachers.Remove(Teacher);
                 _context.SaveChanges();
                 return true;
             }
@@ -321,7 +321,7 @@ namespace Team4_P2.Repo.Repository
             try
             {
                 var user = await _context.Users.FirstOrDefaultAsync(x => x.UserId == UserId);
-                _context.Remove(user);
+                _context.Users.Remove(user);
                 _context.SaveChanges();
                 return true;
             }
