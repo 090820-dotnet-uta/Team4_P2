@@ -296,19 +296,19 @@ namespace Team4_P2.Repo.Repository
         public async Task<User> Login(User user)
         {
             var login = new User();
-            if(user.Role == Role.Admin)
-            {
-                login = await _context.Users.FirstOrDefaultAsync(u => u.UserName == user.UserName && u.Password == user.Password);
-            }
-            else if(user.Role == Role.Teacher)
-            {
-                login = await _context.Users.FirstOrDefaultAsync(u => u.UserName == user.UserName && u.Password == user.Password);
-            }
-            else
-            {
-                login = await _context.Users.FirstOrDefaultAsync(u => u.UserName == user.UserName && u.Password == user.Password);
-            }
-            
+            //if(user.Role == Role.Admin)
+            //{
+            //    login = await _context.Users.FirstOrDefaultAsync(u => u.UserName == user.UserName && u.Password == user.Password);
+            //}
+            //else if(user.Role == Role.Teacher)
+            //{
+            //    login = await _context.Users.FirstOrDefaultAsync(u => u.UserName == user.UserName && u.Password == user.Password);
+            //}
+            //else
+            //{
+            //    login = await _context.Users.FirstOrDefaultAsync(u => u.UserName == user.UserName && u.Password == user.Password);
+            //}
+            login = await _context.Users.FirstOrDefaultAsync(u => u.UserName == user.UserName && u.Password == user.Password);
             return login;
         }
         public async Task<User> EditUserScoreAsync(User user)
