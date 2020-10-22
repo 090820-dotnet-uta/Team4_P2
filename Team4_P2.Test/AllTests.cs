@@ -182,7 +182,7 @@ namespace Team4_P2.Test
         public async void AddCourseToDb()
         {
             var options = new DbContextOptionsBuilder<AppDbContext>()
-                .UseInMemoryDatabase(databaseName: "yeet").Options;
+                .UseInMemoryDatabase(databaseName: "yeet2").Options;
             using (var context = new AppDbContext(options))
             {
                 Repository repo = new Repository(context);
@@ -198,7 +198,7 @@ namespace Team4_P2.Test
         public async void DeleteCourseToDb()
         {
             var options = new DbContextOptionsBuilder<AppDbContext>()
-                .UseInMemoryDatabase(databaseName: "yeet").Options;
+                .UseInMemoryDatabase(databaseName: "yeet2").Options;
             using (var context = new AppDbContext(options))
             {
                 Repository repo = new Repository(context);
