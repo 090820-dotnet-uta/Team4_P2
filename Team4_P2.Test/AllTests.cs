@@ -48,25 +48,21 @@ namespace Team4_P2.Test
                 Repository repo = new Repository(context);
                 var _CourseController = new CourseController(repo);
                 Course tempCourseOne = new Course();
-                tempCourseOne.Title = "First Course";
+                tempCourseOne.Title = "first";
                 
                 Course tempCourseTwo = new Course();
-                tempCourseOne.Title = "Second Course";
+                tempCourseOne.Title = "second";
                 await _CourseController.CreateCourseAsync(tempCourseOne);
                 await _CourseController.CreateCourseAsync(tempCourseTwo);
 
                 ActionResult<List<Course>> testList = _CourseController.GetAll().Result;
                 testList = testList.Value;
                 Assert.NotNull(testList);
-                //Assert.Equal("Second Course",)
                 ActionResult<Course> testList2 = _CourseController.Get(1).Result;
                 Assert.NotNull(testList2);
-                tempCourseTwo.Title = "third";
-                Console.WriteLine(tempCourseTwo.Title);
-                await _CourseController.PutCourse(tempCourseTwo);
-                var readRecord = _CourseController.Get(2).Result.Value;
-                Assert.Equal(2, readRecord.CourseId);
-
+                tempCourseOne.Title = "third";
+                await repo.EditCourseScoreAsync(tempCourseOne);
+                Assert.Equal("third", (repo.GetCourseAsync(1).Result.Title));
             }
         }
         [Fact]
@@ -84,6 +80,22 @@ namespace Team4_P2.Test
                 Assert.True(context.Admins.Contains(Admin));
             }
         }
+        //[Fact]
+        //public async void putCourseToDb()
+        //{
+        //    var options = new DbContextOptionsBuilder<AppDbContext>()
+        //        .UseInMemoryDatabase(databaseName: "yeet").Options;
+        //    using (var context = new AppDbContext(options))
+        //    {
+        //        Repository repo = new Repository(context);
+        //        Course course= new Course();
+        //        course.Title = "first";
+        //        await repo.AddCourse(course);
+        //        course.Title = "second";
+        //        await repo.EditCourseScoreAsync(course);
+        //        Assert.Equal("second",(repo.GetCourseAsync(1).Result.Title));
+        //    }
+        //}
         [Fact]
         public async void DeleteAdminToDb()
         {

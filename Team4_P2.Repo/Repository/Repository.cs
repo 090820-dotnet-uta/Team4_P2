@@ -34,7 +34,7 @@ namespace Team4_P2.Repo.Repository
         }
         public async Task<Admin> EditAdminScoreAsync(Admin admin)
         {
-            _context.Update(admin);
+            _context.Admins.Update(admin);
             _context.SaveChanges();
             return await _context.Admins.FirstOrDefaultAsync(x => x == admin);
         }
@@ -69,7 +69,7 @@ namespace Team4_P2.Repo.Repository
         }
         public async Task<Assignment> EditAssignmentScoreAsync(Assignment assignment)
         {
-            _context.Update(assignment);
+            _context.Assignments.Update(assignment);
             _context.SaveChanges();
             return await _context.Assignments.FirstOrDefaultAsync(x => x == assignment);
         }
@@ -106,7 +106,7 @@ namespace Team4_P2.Repo.Repository
         }
         public async Task<Class> EditClassScoreAsync(Class Class)
         {
-            _context.Update(Class);
+            _context.Classes.Update(Class);
             _context.SaveChanges();
             return await _context.Classes.FirstOrDefaultAsync(tempClass => tempClass.Equals(Class));
         }
@@ -141,9 +141,7 @@ namespace Team4_P2.Repo.Repository
         }
         public async Task<Course> EditCourseScoreAsync(Course course)
         {
-            //var target = await _context.Courses.FindAsync(course.CourseId);
-            //target = course;
-            _context.Update(course);
+            _context.Courses.Update(course);
             _context.SaveChanges();
             return await _context.Courses.FirstOrDefaultAsync(tempCourse => tempCourse.Equals(course));
         }
@@ -178,7 +176,7 @@ namespace Team4_P2.Repo.Repository
         }
         public async Task<Enrollment> EditEnrollmentScoreAsync(Enrollment enrollment)
         {
-            _context.Update(enrollment);
+            _context.Enrollments.Update(enrollment);
             _context.SaveChanges();
             return await _context.Enrollments.FirstOrDefaultAsync(tempEnrollment => tempEnrollment.Equals(enrollment));
         }
@@ -211,13 +209,11 @@ namespace Team4_P2.Repo.Repository
             _context.SaveChanges();
             return await _context.Students.FirstOrDefaultAsync(tempStudent => tempStudent.Equals(Student));
         }
-        public async Task<Student> EditStudentScoreAsync(Student Student)
+        public async Task<Student> EditStudentScoreAsync(Student student)
         {
-            var target = await _context.Students.FindAsync(Student.StudentId);
-            target = Student;
-            _context.Update(target);
+            _context.Students.Update(student);
             _context.SaveChanges();
-            return await _context.Students.FirstOrDefaultAsync(tempStudent => tempStudent.Equals(Student));
+            return await _context.Students.FirstOrDefaultAsync(tempStudent => tempStudent.Equals(student));
         }
         public async Task<Boolean> DeleteStudent(int StudentId)
         {
@@ -250,7 +246,7 @@ namespace Team4_P2.Repo.Repository
         }
         public async Task<Teacher> EditTeacherScoreAsync(Teacher teacher)
         {
-            _context.Update(teacher);
+            _context.Teachers.Update(teacher);
             _context.SaveChanges();
             return await _context.Teachers.FirstOrDefaultAsync(tempTeacher => tempTeacher.Equals(teacher));
         }
@@ -316,7 +312,7 @@ namespace Team4_P2.Repo.Repository
         }
         public async Task<User> EditUserScoreAsync(User user)
         {
-            _context.Update(user);
+            _context.Users.Update(user);
             _context.SaveChanges();
             return await _context.Users.FirstOrDefaultAsync(x => x == user);
         }
