@@ -1,7 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Team4_P2.Models.Models;
-using System.Collections.Generic;
 namespace Team4_P2.Models
 {
     public class Student
@@ -13,7 +12,6 @@ namespace Team4_P2.Models
         public int UserId { get; set; }
         public User User { get; set; }
 
-        public List<Enrollment> Enrollments { get; set; }
     }
 
 }
