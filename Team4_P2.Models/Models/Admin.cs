@@ -8,5 +8,7 @@ namespace Team4_P2.Models.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int AdminId { get; set; }
+        public int UserId { get; set; }
+        public User User { get; set; }
     }
 }

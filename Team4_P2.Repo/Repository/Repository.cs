@@ -305,22 +305,22 @@ namespace Team4_P2.Repo.Repository
             }
             _context.Add(newUser);
             _context.SaveChanges();
-            return await _context.Users.Include(u => u.Admin).Include(u => u.Teacher).Include(u => u.Student).FirstOrDefaultAsync(tempUser => tempUser.Equals(newUser));
+            return await _context.Users.FirstOrDefaultAsync(tempUser => tempUser.Equals(newUser));
         }
         public async Task<User> Login(User user)
         {
             var login = new User();
             if(user.Role == Role.Admin)
             {
-                login = await _context.Users.Include(u => u.Admin).FirstOrDefaultAsync(u => u.UserName == user.UserName && u.Password == user.Password);
+                login = await _context.Users.FirstOrDefaultAsync(u => u.UserName == user.UserName && u.Password == user.Password);
             }
             else if(user.Role == Role.Teacher)
             {
-                login = await _context.Users.Include(u => u.Teacher).FirstOrDefaultAsync(u => u.UserName == user.UserName && u.Password == user.Password);
+                login = await _context.Users.FirstOrDefaultAsync(u => u.UserName == user.UserName && u.Password == user.Password);
             }
             else
             {
-                login = await _context.Users.Include(u => u.Student).FirstOrDefaultAsync(u => u.UserName == user.UserName && u.Password == user.Password);
+                login = await _context.Users.FirstOrDefaultAsync(u => u.UserName == user.UserName && u.Password == user.Password);
             }
             
             return login;
