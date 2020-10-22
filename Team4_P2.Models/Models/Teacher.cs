@@ -7,8 +7,6 @@ namespace Team4_P2.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TeacherId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
         public char Gender { get; set; }
     }
 }

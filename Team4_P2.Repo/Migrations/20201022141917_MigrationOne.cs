@@ -2,7 +2,7 @@
 
 namespace Team4_P2.Repo.Migrations
 {
-    public partial class migrationOne : Migration
+    public partial class MigrationOne : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -37,8 +37,6 @@ namespace Team4_P2.Repo.Migrations
                 {
                     StudentId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    LastName = table.Column<string>(nullable: false),
-                    FirstName = table.Column<string>(nullable: false),
                     PhoneNumber = table.Column<string>(nullable: true),
                     Gender = table.Column<string>(nullable: false)
                 },
@@ -53,8 +51,6 @@ namespace Team4_P2.Repo.Migrations
                 {
                     TeacherId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(nullable: true),
-                    LastName = table.Column<string>(nullable: true),
                     Gender = table.Column<string>(nullable: false)
                 },
                 constraints: table =>

@@ -62,6 +62,7 @@ namespace Team4_P2.Test
                 ActionResult<Course> testList2 = _CourseController.Get(1).Result;
                 Assert.NotNull(testList2);
                 tempCourseTwo.Title = "third";
+                Console.WriteLine(tempCourseTwo.Title);
                 await _CourseController.PutCourse(tempCourseTwo);
                 var readRecord = _CourseController.Get(2).Result.Value;
                 Assert.Equal(2, readRecord.CourseId);

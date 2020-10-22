@@ -36,7 +36,11 @@ namespace dummyapi
         {
             return await _repository.GetUserAsync(id);
         }
-
+        [HttpPost("Login")]
+        public async Task<ActionResult<User>> Login(User user)
+        {
+            return await _repository.Login(user);
+        }
         // POST api/<UserController>
         [HttpPost("add")]//Add
         public async Task<ActionResult<User>> CreateUserAsync(User user)
