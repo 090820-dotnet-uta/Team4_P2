@@ -49,7 +49,7 @@ namespace dummyapi
         }
 
         // PUT api/<EnrollmentController>/5
-        [HttpPut("{id}")]//update
+        [HttpPut]//update
         public async Task<ActionResult<Enrollment>> PutEnrollment(Enrollment Enrollment)
         {
             try

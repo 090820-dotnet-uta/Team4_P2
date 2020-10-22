@@ -52,7 +52,7 @@ namespace dummyapi
         }
 
         // PUT api/<AssignmentController>/5
-        [HttpPut("{id}")]
+        [HttpPut]
         public async Task<ActionResult<Assignment>> PutAssignment(Assignment Assignment)
         {
             try

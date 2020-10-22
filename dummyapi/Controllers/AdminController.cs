@@ -53,7 +53,7 @@ namespace dummyapi
         }
 
         // PUT api/<AdminController>/5
-        [HttpPut("{id}")]
+        [HttpPut]
         public async Task<ActionResult<Admin>> PutAdmin(Admin Admin)
         {
             try

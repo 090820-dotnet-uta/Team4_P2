@@ -57,7 +57,7 @@ namespace dummyapi
         }
 
         // PUT api/<ClassController>/5
-        [HttpPut("{id}")]//update
+        [HttpPut]//update
         public async Task<ActionResult<Class>> PutClass(Class Class)
         {
             try
