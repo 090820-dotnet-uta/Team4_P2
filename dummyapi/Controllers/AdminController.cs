@@ -67,12 +67,12 @@ namespace dummyapi
         }
         // DELETE api/<AdminController>/5
         [HttpDelete("{id}")]
-        public async Task<bool> DeleteAdmin(Admin admin)
+        public bool DeleteAdmin(Admin admin)
         {
-            Boolean result;
+            bool result;
             try
             {
-                result = await _repository.DeleteAdmin(admin);
+                result = _repository.DeleteAdmin(admin);
             }
             catch (DbUpdateConcurrencyException)
             {

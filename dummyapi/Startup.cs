@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using dummyapi.Middlewares;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,13 +32,7 @@ namespace dummyapi
             services.AddControllers();
             services.AddScoped<Repository>();
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddCors(cors =>
-            {
-                cors.AddPolicy("Public", policy =>
-                {
-                    policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
-                });
-            });
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,7 +48,14 @@ namespace dummyapi
             app.UseRouting();
 
             app.UseAuthorization();
-            app.UseCors();
+            app.UseCors(builder => builder
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .SetIsOriginAllowed((host) => true)
+                .AllowCredentials()
+                );
+
+            app.UseMiddleware<CORMiddleware>();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

@@ -108,7 +108,7 @@ namespace Team4_P2.Test
 
                 Admin = await repo.AddAdmin(Admin);
 
-                bool rip = await repo.DeleteAdmin(Admin);
+                bool rip = repo.DeleteAdmin(Admin);
                 Assert.False(context.Admins.Contains(Admin));
             }
         }
