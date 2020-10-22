@@ -92,9 +92,9 @@ namespace Team4_P2.Repo.Migrations
                     Role = table.Column<int>(nullable: false),
                     UserName = table.Column<string>(nullable: true),
                     Password = table.Column<string>(nullable: true),
-                    StudentId = table.Column<int>(nullable: true),
-                    TeacherId = table.Column<int>(nullable: true),
-                    AdminId = table.Column<int>(nullable: true),
+                    StudentId = table.Column<int>(nullable: false),
+                    TeacherId = table.Column<int>(nullable: false),
+                    AdminId = table.Column<int>(nullable: false),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
                     Gender = table.Column<string>(nullable: false)
@@ -107,19 +107,19 @@ namespace Team4_P2.Repo.Migrations
                         column: x => x.AdminId,
                         principalTable: "Admins",
                         principalColumn: "AdminId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Users_Students_StudentId",
                         column: x => x.StudentId,
                         principalTable: "Students",
                         principalColumn: "StudentId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Users_Teachers_TeacherId",
                         column: x => x.TeacherId,
                         principalTable: "Teachers",
                         principalColumn: "TeacherId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
