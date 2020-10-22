@@ -69,7 +69,7 @@ namespace Team4_P2.Test
         public async void UserControllerTest()
         {
             var options = new DbContextOptionsBuilder<AppDbContext>()
-                .UseInMemoryDatabase(databaseName: "yeet").Options;
+                .UseInMemoryDatabase(databaseName: "yeetus").Options;
             using (var context = new AppDbContext(options))
             {
                 Repository repo = new Repository(context);
