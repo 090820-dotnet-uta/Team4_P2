@@ -275,7 +275,7 @@ namespace Team4_P2.Repo.Repository
         }
         public async Task<User> AddUser(User user)
         {
-            var newUser = new User();
+            var newUser = user;
             if(user.Role == Role.Admin)
             {
                 newUser.Role = Role.Admin;
@@ -288,7 +288,8 @@ namespace Team4_P2.Repo.Repository
             {
                 newUser.Role = Role.Student;
             }
-            _context.Add(newUser);
+            
+            _context.Users.Add(newUser);
             _context.SaveChanges();
             return await _context.Users.FirstOrDefaultAsync(tempUser => tempUser.Equals(newUser));
         }
