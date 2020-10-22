@@ -66,6 +66,34 @@ namespace Team4_P2.Test
             }
         }
         [Fact]
+        public async void UserControllerTest()
+        {
+            var options = new DbContextOptionsBuilder<AppDbContext>()
+                .UseInMemoryDatabase(databaseName: "yeet").Options;
+            using (var context = new AppDbContext(options))
+            {
+                Repository repo = new Repository(context);
+                var _UserController = new UserController(repo);
+                User tempUserOne = new User();
+                tempUserOne.Role = Role.Student;
+                tempUserOne.UserName = "a";
+                tempUserOne.Password = "b";
+                tempUserOne.FirstName = "c";
+                tempUserOne.LastName = "d";
+                tempUserOne.Gender = 'M';
+                await _UserController.CreateUserAsync(tempUserOne);
+
+                ActionResult<List<User>> testList = _UserController.GetAll().Result;
+                testList = testList.Value;
+                Assert.NotNull(testList);
+                ActionResult<User> testList2 = _UserController.Get(1).Result;
+                Assert.NotNull(testList2);
+                tempUserOne.FirstName = "idk";
+                await repo.EditUserScoreAsync(tempUserOne);
+                Assert.Equal("idk", (repo.GetUserAsync(1).Result.FirstName));
+            }
+        }
+        [Fact]
         public async void AddAdminToDb()
         {
             var options = new DbContextOptionsBuilder<AppDbContext>()
