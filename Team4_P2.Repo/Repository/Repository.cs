@@ -305,7 +305,7 @@ namespace Team4_P2.Repo.Repository
             }
             _context.Add(newUser);
             _context.SaveChanges();
-            return await _context.Users.FirstOrDefaultAsync(tempUser => tempUser.Equals(newUser));
+            return await _context.Users.Include(u => u.Admin).Include(u => u.Teacher).Include(u => u.Student).FirstOrDefaultAsync(tempUser => tempUser.Equals(newUser));
         }
         public async Task<User> Login(User user)
         {

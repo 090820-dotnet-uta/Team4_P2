@@ -10,8 +10,8 @@ using Team4_P2.Repo.Data;
 namespace Team4_P2.Repo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20201022141917_MigrationOne")]
-    partial class MigrationOne
+    [Migration("20201022144137_migrationOne")]
+    partial class migrationOne
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -171,10 +171,6 @@ namespace Team4_P2.Repo.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Gender")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(1)");
-
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
@@ -189,10 +185,6 @@ namespace Team4_P2.Repo.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Gender")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(1)");
 
                     b.HasKey("TeacherId");
 
